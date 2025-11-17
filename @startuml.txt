@@ -1,0 +1,167 @@
+@startuml
+'===========================
+' USE CASE MODULE 1: DANH MỤC SẢN PHẨM
+'===========================
+left to right direction
+actor "Quản trị viên"
+
+rectangle "Module 1: Quản lý Danh mục Sản phẩm" {
+  (Thêm/Sửa/Vô hiệu hóa sản phẩm)
+  (Xem thông tin chi tiết sản phẩm)
+  (Tìm kiếm & Lọc sản phẩm)
+  (Xuất danh mục sản phẩm ra Excel)
+}
+
+"Quản trị viên" --> (Thêm/Sửa/Vô hiệu hóa sản phẩm)
+"Quản trị viên" --> (Xem thông tin chi tiết sản phẩm)
+"Quản trị viên" --> (Tìm kiếm & Lọc sản phẩm)
+"Quản trị viên" --> (Xuất danh mục sản phẩm ra Excel)
+@enduml
+
+@startuml
+'===========================
+' USE CASE MODULE 2: NHẬP KHO
+'===========================
+left to right direction
+actor "Nhân viên kho"
+actor "Quản trị viên"
+
+rectangle "Module 2: Quản lý Nhập kho" {
+  (Tạo phiếu nhập kho)
+  (Ghi chi tiết phiếu nhập: số lượng, đơn giá, lô, hạn dùng)
+  (Xác nhận phiếu nhập → Cập nhật tồn kho)
+}
+
+"Nhân viên kho" --> (Tạo phiếu nhập kho)
+"Nhân viên kho" --> (Ghi chi tiết phiếu nhập: số lượng, đơn giá, lô, hạn dùng)
+"Nhân viên kho" --> (Xác nhận phiếu nhập → Cập nhật tồn kho)
+"Quản trị viên" --> (Xác nhận phiếu nhập → Cập nhật tồn kho)
+@enduml
+
+@startuml
+'===========================
+' USE CASE MODULE 3: XUẤT KHO
+'===========================
+left to right direction
+actor "Nhân viên kho"
+actor "Kế toán"
+actor "Quản trị viên"
+
+rectangle "Module 3: Quản lý Xuất kho" {
+  (Tạo phiếu xuất bán/hủy/trả NCC)
+  (Gợi ý xuất kho thông minh FIFO/FEFO)
+  (Xác nhận phiếu xuất → Trừ tồn kho)
+}
+
+"Nhân viên kho" --> (Tạo phiếu xuất bán/hủy/trả NCC)
+"Nhân viên kho" --> (Gợi ý xuất kho thông minh FIFO/FEFO)
+"Nhân viên kho" --> (Xác nhận phiếu xuất → Trừ tồn kho)
+"Kế toán" --> (Tạo phiếu xuất bán/hủy/trả NCC)
+"Kế toán" --> (Xác nhận phiếu xuất → Trừ tồn kho)
+"Quản trị viên" --> (Xác nhận phiếu xuất → Trừ tồn kho)
+@enduml
+
+@startuml
+'===========================
+' USE CASE MODULE 4: TỒN KHO & KIỂM KÊ
+'===========================
+left to right direction
+actor "Nhân viên kho"
+actor "Quản lý kho"
+actor "Quản trị viên"
+
+rectangle "Module 4: Quản lý Tồn kho & Kiểm kê" {
+  (Xem tồn kho theo thời gian thực)
+  (Tạo phiên kiểm kê)
+  (Nhập số lượng thực tế - Thực hiện kiểm kê)
+  (Xử lý chênh lệch → Tạo phiếu cân bằng)
+}
+
+"Nhân viên kho" --> (Tạo phiên kiểm kê)
+"Nhân viên kho" --> (Nhập số lượng thực tế - Thực hiện kiểm kê)
+"Quản lý kho" --> (Xử lý chênh lệch → Tạo phiếu cân bằng)
+"Quản lý kho" --> (Xem tồn kho theo thời gian thực)
+"Quản trị viên" --> (Xử lý chênh lệch → Tạo phiếu cân bằng)
+@enduml
+
+@startuml
+'===========================
+' USE CASE MODULE 5: BÁO CÁO & THỐNG KÊ
+'===========================
+left to right direction
+actor "Quản trị viên"
+actor "Kế toán"
+
+rectangle "Module 5: Báo cáo & Thống kê" {
+  (Báo cáo tồn kho tức thời)
+  (Báo cáo xuất nhập tồn - thẻ kho)
+  (Báo cáo doanh thu - top sản phẩm)
+  (Báo cáo cảnh báo hết hạn / chậm luân chuyển)
+  (Xuất báo cáo ra Excel)
+}
+
+"Quản trị viên" --> (Báo cáo tồn kho tức thời)
+"Quản trị viên" --> (Báo cáo xuất nhập tồn - thẻ kho)
+"Quản trị viên" --> (Báo cáo doanh thu - top sản phẩm)
+"Kế toán" --> (Báo cáo doanh thu - top sản phẩm)
+"Kế toán" --> (Báo cáo xuất nhập tồn - thẻ kho)
+"Quản trị viên" --> (Xuất báo cáo ra Excel)
+@enduml
+
+@startuml
+'===========================
+' USE CASE MODULE 6: CẢNH BÁO & TỰ ĐỘNG HÓA
+'===========================
+left to right direction
+actor "Quản trị viên"
+actor "Hệ thống tự động"
+
+
+rectangle "Module 6: Cảnh báo & Tự động hoá" {
+(Cảnh báo lô sắp hết hạn)
+(Cảnh báo hàng tồn thấp dưới mức đặt hàng)
+(Tự động gửi thông báo qua email / dashboard)
+(Tự động sao lưu dữ liệu định kỳ)
+}
+
+
+"Hệ thống tự động" --> (Cảnh báo lô sắp hết hạn)
+"Hệ thống tự động" --> (Cảnh báo hàng tồn thấp dưới mức đặt hàng)
+"Hệ thống tự động" --> (Tự động gửi thông báo qua email / dashboard)
+"Hệ thống tự động" --> (Tự động sao lưu dữ liệu định kỳ)
+"Quản trị viên" --> (Cảnh báo lô sắp hết hạn)
+"Quản trị viên" --> (Cảnh báo hàng tồn thấp dưới mức đặt hàng)
+@enduml
+
+@startuml
+left to right direction
+actor "Quản trị viên" as Admin
+actor "Nhân viên kho" as NVKho
+actor "Kế toán" as KToan
+actor "Hệ thống tự động" as System
+
+rectangle "HỆ THỐNG QUẢN LÝ KHO" {
+  (Quản lý Danh mục Sản phẩm) as UC1
+  (Quản lý Nhập kho) as UC2
+  (Quản lý Xuất kho) as UC3
+  (Quản lý Tồn kho & Kiểm kê) as UC4
+  (Báo cáo & Thống kê) as UC5
+  (Cảnh báo & Tự động hoá) as UC6
+}
+
+Admin --> UC1
+Admin --> UC2
+Admin --> UC3
+Admin --> UC4
+Admin --> UC5
+Admin --> UC6
+
+NVKho --> UC2
+NVKho --> UC3
+NVKho --> UC4
+
+KToan --> UC3
+KToan --> UC5
+
+System --> UC6
+@enduml
