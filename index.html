@@ -754,11 +754,12 @@
   setInterval(createHeart, HEART_INTERVAL);
 
   // API endpoints: nếu mở front-end bằng Live Server (port khác 3000) thì dùng backend Node ở 3000
+  const API_OVERRIDE = window.API_BASE_URL || window.API_BASE || window.__API_BASE__ || '';
   const localHosts = ['localhost', '127.0.0.1', '0.0.0.0'];
   const needsProxy = localHosts.includes(window.location.hostname)
     && window.location.port
     && window.location.port !== '3000';
-  const API_BASE = needsProxy ? 'http://localhost:3000' : '';
+  const API_BASE = API_OVERRIDE || (needsProxy ? 'http://localhost:3000' : '');
   const API_RSVP = `${API_BASE}/api/rsvp`;
   const API_GUESTBOOK = `${API_BASE}/api/guestbook`;
 
