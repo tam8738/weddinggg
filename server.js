@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const ROOT = __dirname;
 
-// Google Sheets configuration
+// cấu hình Google Sheets lấy từ biến môi trường
 const SHEET_ID = process.env.GOOGLE_SPREADSHEET_ID || '';
 const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || '';
 const PRIVATE_KEY = (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n');
@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // -------------------------
-// Local JSON storage helper
+// Bộ hàm hỗ trợ lưu JSON cục bộ khi không dùng Google Sheets
 // -------------------------
 function ensureDataFiles() {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR);
@@ -51,7 +51,7 @@ function safeWriteJson(file, data) {
 }
 
 // -------------------------
-// Google Sheets helper logic
+// Các hàm thao tác với Google Sheets
 // -------------------------
 const SHEET_HEADERS = {
   [RSVP_SHEET]: ['Thời gian', 'Tên', 'Số điện thoại', 'số người đi cùng', 'Ghi chú'],
@@ -142,7 +142,7 @@ async function fetchGuestbookRows(limit = 10) {
 }
 
 // -------------------------
-// Storage abstraction
+// Lớp trừu tượng để chọn nơi lưu: Sheets hoặc JSON
 // -------------------------
 const storage = useGoogleSheets
   ? {
@@ -191,7 +191,7 @@ storage
   });
 
 // -------------------------
-// API endpoints
+// Định nghĩa API phục vụ frontend
 // -------------------------
 app.post('/api/rsvp', async (req, res) => {
   const { name, phone = '', guests = 1, note = '', timestamp = new Date().toISOString() } = req.body || {};
@@ -246,10 +246,10 @@ app.get('/api/guestbook', async (req, res) => {
   }
 });
 
-// Static files (serve current folder)
+// Phục vụ toàn bộ file tĩnh trong thư mục gốc
 app.use(express.static(ROOT));
 
-// Fallback to index.html
+// Nếu không trùng route API thì trả về trang chủ
 app.get('*', (req, res) => {
   res.sendFile(path.join(ROOT, 'index.html'));
 });

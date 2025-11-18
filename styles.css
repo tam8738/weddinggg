@@ -1,21 +1,21 @@
 body {
-  font-family: 'Montserrat', sans-serif;
-  color: #4A4A4A;
-  scroll-behavior: smooth;
-  background-color: #fff8f2;
+  font-family: 'Montserrat', sans-serif; /* chữ thanh thoát, dễ đọc */
+  color: #4A4A4A; /* tông xám trung tính tăng độ tương phản */
+  scroll-behavior: smooth; /* cuộn trang mượt khi nhảy anchor */
+  background-color: #fff8f2; /* nền milky giữ bảng màu dịu */
 }
 
 
-/* Diagonal section (Chuyện chúng mình) */
+/* Khối "Chuyện chúng mình" với nền xiên để tạo điểm nhấn */
 .diagonal-section {
   position: relative;
-  clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+  clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%); /* cắt góc tạo mảng xiên */
 }
 
-/* Double border helper */
+/* Bộ khung viền kép dùng lại nhiều nơi (thẻ thông tin, lời chúc, v.v.) */
 .double-border {
   position: relative;
-  border: 1px solid #e04545;
+  border: 1px solid #e04545; /* viền ngoài màu hồng chủ đạo */
 }
 .double-border:before {
   content: "";
@@ -25,11 +25,11 @@ body {
   left: 8px;
   right: 8px;
   border: 1px solid #e04545;
-  pointer-events: none;
+  pointer-events: none; /* không chặn thao tác vào nội dung */
 }
 .double-border-white {
   position: relative;
-  border: 2px solid #fff;
+  border: 2px solid #fff; /* phiên bản viền trắng cho nền hồng */
 }
 .double-border-white:before {
   content: "";
@@ -42,66 +42,87 @@ body {
   pointer-events: none;
 }
 
-/* Simple SVG leaf decoration size */
+/* Kích thước mặc định cho icon chiếc lá SVG trang trí */
 .leaf-svg {
-  width: 90px;
-  height: 40px;
+  width: 90px; /* đủ lớn để nhìn rõ nhưng không lấn át */
+  height: 40px; /* giữ dáng lá mảnh mai */
 }
 .spin-slow {
-  animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite; /* icon xoay chậm, không gây rối mắt */
 }
 
-/* Falling hearts animation */
+/* Hiệu ứng nổi nhẹ cho tiêu đề chính ở hero để tạo cảm giác sinh động */
+.animated-heading {
+  display: inline-block;
+  animation: weddingFloat 6s ease-in-out infinite alternate; /* tiêu đề nổi nhịp nhàng */
+}
+
+@keyframes weddingFloat {
+  0% {
+    transform: translateY(0);
+    letter-spacing: 0.06em; /* khoảng cách chữ mặc định */
+  }
+  50% {
+    transform: translateY(-6px);
+    letter-spacing: 0.1em; /* giãn chữ khi nổi lên */
+  }
+  100% {
+    transform: translateY(0);
+    letter-spacing: 0.06em;
+  }
+}
+
+/* Hiệu ứng trái tim rơi nhẹ nhàng phủ toàn trang */
 @keyframes fall {
   0% {
     transform: translateY(-10vh) rotate(0deg);
-    opacity: 1;
+    opacity: 1; /* bắt đầu xuất hiện ở trên */
   }
   100% {
     transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
+    opacity: 0; /* rơi khỏi màn hình rồi biến mất */
   }
 }
 .heart {
   position: fixed;
-  top: -10vh;
-  font-size: 20px;
-  color: #e04545;
+  top: -10vh; /* tạo trái tim ngay mép trên */
+  font-size: 20px; /* kích thước gốc, JS sẽ random thêm */
+  color: #e04545; /* giữ bảng màu chủ đạo */
   opacity: 0.55;
   animation: fall linear infinite;
-  z-index: 9999;
-  pointer-events: none;
+  z-index: 9999; /* luôn nổi trên cùng */
+  pointer-events: none; /* không chặn thao tác người dùng */
 }
 
-/* Hero slideshow */
+/* Trình chiếu ảnh nền khu vực hero */
 @keyframes slideshow {
   0%, 33% { opacity: 1; }
   34%, 100% { opacity: 0; }
 }
 .hero-slide {
   position: absolute;
-  inset: 0;
+  inset: 0; /* phủ kín khu vực hero */
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out; /* chuyển ảnh mượt mà */
 }
-.hero-slide:nth-child(1) { animation: slideshow 9s infinite; }
-.hero-slide:nth-child(2) { animation: slideshow 9s 3s infinite; }
-.hero-slide:nth-child(3) { animation: slideshow 9s 6s infinite; }
+.hero-slide:nth-child(1) { animation: slideshow 9s infinite; /* ảnh đầu tiên chạy ngay */ }
+.hero-slide:nth-child(2) { animation: slideshow 9s 3s infinite; /* ảnh thứ hai trễ 3 giây */ }
+.hero-slide:nth-child(3) { animation: slideshow 9s 6s infinite; /* ảnh thứ ba trễ 6 giây */ }
 
-/* Modal RSVP */
+/* Thiết lập cơ bản cho modal RSVP (ẩn/hiện trung tâm màn hình) */
 .modal {
-  display: none;
+  display: none; /* ẩn modal mặc định */
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.6); /* phủ nền tối để nội dung nổi bật */
   z-index: 9998;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px); /* làm mờ nền phía sau */
 }
-.modal.active { display: flex; }
+.modal.active { display: flex; /* kích hoạt modal dạng flex để căn giữa */ }
 
-/* Tulip outline background */
+/* Nền hoa tulip được phủ mờ để tạo texture nhẹ nhàng */
 .tulip-bg {
   position: relative;
 }
@@ -111,18 +132,18 @@ body {
   inset: 0;
   background-image: url('3.png');
   background-repeat: repeat;
-  background-size: 220px;
-  opacity: 0.12;
+  background-size: 220px; /* họa tiết vừa đủ thưa */
+  opacity: 0.12; /* nền mờ để không gây rối mắt */
   pointer-events: none;
 }
 
-/* Overlay card double border animation */
+/* Phần viền động khi hover vào ảnh nhân vật */
 .overlay-border {
   position: absolute;
-  inset: 3px;
+  inset: 3px; /* cách viền ngoài 3px */
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease; /* hiện viền nhẹ khi hover */
 }
 .overlay-border svg {
   width: 100%;
@@ -130,71 +151,58 @@ body {
 }
 .overlay-border line {
   stroke: #e04545;
-  stroke-width: 0.35;
+  stroke-width: 0.35; /* viền mảnh */
   stroke-linecap: square;
   fill: none;
   stroke-dasharray: 100;
-  stroke-dashoffset: 100;
+  stroke-dashoffset: 100; /* bắt đầu ở trạng thái chưa vẽ */
 }
 .overlay-border .inner-frame {
   stroke: #e04545;
   transform: translate(0, 0);
 }
-.font-art { font-family: 'Great Vibes', cursive; }
-.uniform-img { width:100%; height:420px; object-fit:cover; }
+.font-art { font-family: 'Great Vibes', cursive; /* chữ ký mềm mại */ }
+.uniform-img { width:100%; height:420px; object-fit:cover; /* đồng bộ tỉ lệ ảnh */ }
 @keyframes fadeInUp { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
 @media (max-width: 767px) {
-  .uniform-img { height: 320px; }
-  .person-photo .overlay-border { display: none; }
+  .uniform-img { height: 320px; /* giảm chiều cao ảnh trên màn nhỏ */ }
+  .person-photo .overlay-border { display: none; /* bỏ viền động để giao diện nhẹ hơn */ }
   .person-photo > .absolute.inset-3 {
     position: static;
     inset: auto;
     opacity: 1 !important;
     transform: none !important;
     background: #ffffff;
-    padding: 1rem;
+    padding: 1rem; /* thêm đệm để dễ đọc */
     box-shadow: none;
     animation: fadeInUp 0.5s ease both;
   }
 }
-/* Remove all rounded corners globally */
+/* Loại bỏ bo góc mặc định của Tailwind để giữ phong cách góc cạnh */
 [class*="rounded-"], .rounded, .rounded-full { border-radius: 0 !important; }
 .person-photo:hover .overlay-border {
   opacity: 1;
 }
 .person-photo:hover .overlay-border line {
-  animation: drawBorder 0.8s ease forwards;
+  animation: drawBorder 0.8s ease forwards; /* viền được vẽ dần */
 }
 @keyframes drawBorder {
   to { stroke-dashoffset: 0; }
 }
-/* Timeline scroll-triggered animation */
+/* Hiệu ứng timeline khi cuộn đến các mốc chuyện tình */
 .timeline-item {
   opacity: 1;
-  transition: all 0.6s ease;
+  transition: all 0.6s ease; /* chuyển đổi mượt khi thêm class visible */
 }
 .timeline-item img {
   opacity: 1;
-  transition: transform 0.8s ease;
+  transition: transform 0.8s ease; /* ảnh trượt nhẹ khi xuất hiện */
 }
 .timeline-item > div:first-child,
 .timeline-item > div:last-child {
-  transition: transform 0.8s ease;
+  transition: transform 0.8s ease; /* nhịp trượt đồng bộ với ảnh */
 }
-/* Item 1: Chữ bên trái, hình bên phải - ban đầu tách ra */
-.timeline-item:nth-child(1) > div:first-child {
-  transform: translateX(-50px);
-}
-.timeline-item:nth-child(1) img {
-  transform: translateX(50px);
-}
-.timeline-item:nth-child(1).visible > div:first-child {
-  transform: translateX(18px);
-}
-.timeline-item:nth-child(1).visible img {
-  transform: translateX(-18px);
-}
-/* Item 2: Quote box - ẩn và zoom */
+/* Item timeline thứ nhất: mốc "Bắt đầu thật tình cờ" */
 .timeline-item:nth-child(2) > div {
   transform: scale(0.9);
   opacity: 0;
@@ -204,7 +212,7 @@ body {
   transform: scale(1);
   opacity: 1;
 }
-/* Item 3: Zoom effect */
+/* Item timeline thứ 2: hộp trích dẫn ở giữa */
 .timeline-item:nth-child(3) > div {
   transform: scale(0.9);
   opacity: 0;
@@ -214,13 +222,23 @@ body {
   transform: scale(1);
   opacity: 1;
 }
-/* Item 4: Zoom effect */
+/* Item timeline thứ 3: mốc "Cùng nhau trưởng thành" */
 .timeline-item:nth-child(4) > div {
   transform: scale(0.9);
   opacity: 0;
   transition: transform 0.8s ease, opacity 0.8s ease;
 }
 .timeline-item:nth-child(4).visible > div {
+  transform: scale(1);
+  opacity: 1;
+}
+/* Item timeline thứ 4: mốc "Lời cầu hôn" */
+.timeline-item:nth-child(5) > div {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+.timeline-item:nth-child(5).visible > div {
   transform: scale(1);
   opacity: 1;
 }
