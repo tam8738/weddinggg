@@ -799,9 +799,24 @@
   const guestbookThanks = document.getElementById('guestbookThanks');
   const latestMessages = [];
 
+  async function loadGuestbook() {
+    if (!guestbookList) return;
+    try {
+      const res = await fetch(API_GUESTBOOK);
+      if (!res.ok) throw new Error('Failed to load guestbook');
+      const data = await res.json();
+      const items = Array.isArray(data.items) ? data.items : [];
+      latestMessages.length = 0;
+      latestMessages.push(...items);
+    } catch (err) {
+      console.warn('Load guestbook failed', err);
+    }
+    renderGuestbook();
+  }
+
   function renderGuestbook() {
     if (!guestbookList) return;
-    guestbookList.innerHTML = latestMessages.slice(0,3).map(m => `
+    guestbookList.innerHTML = latestMessages.slice(0, 3).map((m) => `
       <div class="border border-border-pink p-3">
         <div class="text-xs text-text-dark/60">${m.name || 'Ẩn danh'}</div>
         <div class="text-sm mt-1">${m.message}</div>
@@ -849,8 +864,11 @@
         setTimeout(() => guestbookThanks.classList.add('hidden'), 2000);
       }
       guestbookForm.reset();
+      await loadGuestbook();
     });
   }
+
+  loadGuestbook();
 </script>
 
 </body>
