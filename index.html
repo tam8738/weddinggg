@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Phông chữ Google dùng cho tiêu đề và nội dung -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Corinthia&family=Pacifico&display=swap" rel="stylesheet">
 
   <!-- Nạp Tailwind qua CDN để dùng tiện ích nhanh -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,15 +15,16 @@
       theme: {
         extend: {
           colors: {
-            'primary-pink': '#e04545',
-            'accent-pink': '#e04545',
-            'text-dark': '#4A4A4A',
-            'border-pink': '#e04545',
-            'milky': '#fff8f2'
+            'primary-pink': '#b2cee5',
+            'accent-pink': '#045493',
+            'text-dark': '#000000',
+            'border-pink': '#b2cee5',
+            'milky': '#f9fbfa',
+            'block-light': '#e9f5ff'
           },
           fontFamily: {
-            heading: ['Playfair Display', 'serif'],
-            body: ['Montserrat', 'sans-serif'],
+            heading: ['Corinthia', 'cursive'],
+            body: ['Pacifico', 'cursive'],
           }
         }
       }
@@ -51,13 +51,13 @@
 </audio>
 
 <!-- Thanh mini bar cố định phía trên -->
-<header class="fixed top-0 left-0 right-0 z-40 bg-white/70 backdrop-blur border-b border-border-pink">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between text-sm">
+<header class="fixed top-0 left-0 right-0 z-40 bg-primary-pink border-b border-border-pink">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between text-base">
     <div class="font-heading text-accent-pink text-lg">
       TH <i class="fa-solid fa-heart mx-1 text-accent-pink"></i> TP
     </div>
-    <div class="hidden md:block text-xs text-text-dark/70">
-      11 tháng 05 2025 · Hà Nội
+    <div class="hidden md:block text-sm text-text-dark/70">
+      20 tháng 12 2025 · Hà Nội
     </div>
   </div>
 </header>
@@ -78,24 +78,24 @@
     </div>
 
     <!-- Lớp phủ màu để cân bằng ánh sáng -->
-    <div class="absolute inset-0 bg-primary-pink/50"></div>
+    <div class="absolute inset-0 bg-block-light/80"></div>
 
     <!-- Nội dung chính bên trong hero -->
-    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-      <div class="mb-4 text-3xl text-white">
-        <i class="fa-regular fa-gem"></i>
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 scroll-animate">
+      <div class="mb-4 text-4xl text-text-dark">
+        <i class="fa-solid fa-heart"></i>
       </div>
-      <p class="uppercase tracking-[0.35em] text-xs md:text-sm text-white/80 mb-4">
+      <p class="uppercase tracking-[0.35em] text-sm md:text-base text-text-dark/80 mb-4">
         SAVE THE DATE
       </p>
-      <h1 class="font-heading text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold drop-shadow-md leading-tight mb-4">
+      <h1 class="font-heading text-text-dark text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold leading-tight mb-4">
         Trung Hiếu &amp; Thanh Phương
       </h1>
-      <p class="text-white text-lg md:text-2xl mb-8">
-        11 tháng 05 2025
+      <p class="text-text-dark text-xl md:text-3xl mb-8">
+        20 tháng 12 2025
       </p>
       <a href="#guestbook"
-         class="inline-block px-8 py-3 border border-white text-white rounded-full tracking-wide text-sm md:text-base hover:bg-white hover:text-accent-pink transition">
+         class="inline-block px-10 py-3 border border-border-pink text-text-dark rounded-full tracking-wide text-base md:text-lg hover:bg-primary-pink hover:text-white transition">
         GỬI LỜI CHÚC
       </a>
     </div>
@@ -103,25 +103,25 @@
 
   <!-- KHU 2: Thông tin cô dâu chú rể -->
   <section id="couple" class="py-16 md:py-20 bg-milky">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid md:grid-cols-2 gap-10 items-start relative">
+    <div class="max-w-6xl mx-auto px-4 scroll-animate">
+      <div class="grid md:grid-cols-2 gap-12 items-start relative">
         <!-- Trái tim nhấn mạnh tình yêu ở giữa -->
         <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-20">
-          <div class="w-16 h-16 rounded-full bg-accent-pink text-white flex items-center justify-center animate-pulse shadow-lg">
+          <div class="w-16 h-16 rounded-full bg-primary-pink text-white flex items-center justify-center animate-pulse shadow-lg">
             <i class="fa-solid fa-heart text-2xl"></i>
           </div>
         </div>
 
         <!-- Thông tin chú rể -->
-        <div class="group relative person-photo" data-aos="fade-right">
-          <div class="rounded-3xl overflow-hidden shadow-lg border border-border-pink bg-white">
+        <div class="group relative person-photo scroll-animate" data-aos="fade-right">
+          <div class="rounded-3xl overflow-hidden shadow-lg border border-border-pink bg-block-light">
             <img src="7.jpg" class="uniform-img" alt="Groom">
           </div>
           <!-- Thẻ thông tin hiện khi hover -->
-          <div class="absolute inset-3 bg-white/95 rounded-3xl shadow-2xl flex flex-col items-center justify-center text-center px-6 py-10 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition duration-500">
-            <p class="font-heading text-2xl text-accent-pink mb-1">Trung Hiếu</p>
+          <div class="absolute inset-3 bg-block-light/95 rounded-3xl shadow-2xl flex flex-col items-center justify-center text-center px-6 py-10 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition duration-500">
+            <p class="font-heading text-4xl text-accent-pink mb-2">Trung Hiếu</p>
             <p class="uppercase text-xs tracking-[0.3em] text-text-dark/60 mb-4">THE GROOM</p>
-            <p class="text-sm leading-relaxed text-text-dark/80">
+            <p class="text-base leading-relaxed text-text-dark/80">
               Là một người hiền lành nhưng nói nhiều, thích đi du lịch, thích kiếm tiền và tiêu tiền.
               Luôn coi trọng tình cảm và gia đình.
             </p>
@@ -152,15 +152,15 @@
         </div>
 
         <!-- Thông tin cô dâu -->
-        <div class="group relative person-photo" data-aos="fade-left">
-          <div class="rounded-3xl overflow-hidden shadow-lg border border-border-pink bg-white">
+        <div class="group relative person-photo scroll-animate" data-aos="fade-left">
+          <div class="rounded-3xl overflow-hidden shadow-lg border border-border-pink bg-block-light">
             <img src="8.jpg" class="uniform-img" alt="Bride">
           </div>
           <!-- Thẻ thông tin hiện khi hover -->
-          <div class="absolute inset-3 bg-white/95 rounded-3xl shadow-2xl flex flex-col items-center justify-center text-center px-6 py-10 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition duration-500">
-            <p class="font-heading text-2xl text-accent-pink mb-1">Thanh Phương</p>
+          <div class="absolute inset-3 bg-block-light/95 rounded-3xl shadow-2xl flex flex-col items-center justify-center text-center px-6 py-10 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition duration-500">
+            <p class="font-heading text-4xl text-accent-pink mb-2">Thanh Phương</p>
             <p class="uppercase text-xs tracking-[0.3em] text-text-dark/60 mb-4">THE BRIDE</p>
-            <p class="text-sm leading-relaxed text-text-dark/80">
+            <p class="text-base leading-relaxed text-text-dark/80">
               Là một người hay cười nhưng sống nội tâm, thích hoa, thích mua sắm, thích đi
               những nơi có gió và luôn mơ về một ngôi nhà nhỏ.
             </p>
@@ -192,17 +192,17 @@
       </div>
 
       <!-- Đoạn cảm ơn ngắn cuối phần giới thiệu -->
-      <div class="mt-14 text-center">
-        <h2 class="font-heading text-3xl md:text-4xl text-accent-pink mb-4">
+      <div class="mt-16 text-center scroll-animate">
+        <h2 class="font-heading text-4xl md:text-5xl text-accent-pink mb-6">
           Và.. Ngày ấy đã tới
         </h2>
-        <p class="max-w-3xl mx-auto mb-4 text-sm md:text-base text-text-dark/80">
+        <p class="max-w-3xl mx-auto mb-5 text-base md:text-lg text-text-dark/80">
           Thật vui vì được gặp và đón tiếp các bạn trong một dịp đặc biệt - Ngày cưới của chúng mình.
           Chúng mình muốn gửi đến bạn lời cảm ơn sâu sắc nhất vì đã luôn ở bên và chia sẻ cùng tụi mình.
         </p>
-        <p class="font-art text-3xl md:text-5xl mb-10 text-accent-pink">Trung Hiếu &amp; Thanh Phương</p>
+        <p class="font-art text-4xl md:text-6xl mb-12 text-accent-pink">Trung Hiếu &amp; Thanh Phương</p>
 
-        <div class="grid md:grid-cols-2 gap-6 text-sm text-text-dark/80 max-w-3xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8 text-base text-text-dark/80 max-w-3xl mx-auto">
           <div>
             <p class="uppercase text-xs tracking-wide text-text-dark/60 mb-1">Nhà trai</p>
             <p>Con ông: <span class="font-semibold">Y</span></p>
@@ -220,13 +220,13 @@
 
   <!-- KHU 3: Tiêu đề câu chuyện tình yêu -->
   <section class="my-10">
-    <div class="diagonal-section bg-center bg-cover bg-fixed"
-         style="background-image:url('https://placehold.co/1600x900?text=Rings+Background');">
-      <div class="bg-primary-pink/80 py-16 md:py-24">
-        <div class="max-w-6xl mx-auto px-4 text-center text-white">
-          <h2 class="font-heading text-3xl md:text-4xl mb-4">Chuyện chúng mình</h2>
+        <div class="diagonal-section bg-center bg-cover bg-fixed"
+          style="background-image:url('ring.jpg');">
+      <div class="bg-block-light/80 py-16 md:py-24">
+        <div class="max-w-6xl mx-auto px-4 text-center text-text-dark scroll-animate">
+          <h2 class="font-heading text-4xl md:text-5xl mb-5">Chuyện chúng mình</h2>
           <div class="flex justify-center">
-            <span class="w-12 border-t border-white/70"></span>
+            <span class="w-16 border-t border-text-dark/40"></span>
           </div>
         </div>
       </div>
@@ -240,11 +240,11 @@
         <div class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 border-l-2 border-border-pink hidden md:block"></div>
 
         <!-- Mốc 1: bắt đầu tình cờ -->
-        <div class="mb-16 md:grid md:grid-cols-2 md:gap-10 items-center timeline-item">
+        <div class="mb-16 md:grid md:grid-cols-2 md:gap-12 items-center timeline-item scroll-animate">
           <div class="md:text-right md:pr-8 order-2 md:order-1">
-            <div class="inline-block double-border border-border-pink bg-white px-6 py-4 rounded-2xl shadow-sm">
-              <p class="font-heading text-accent-pink text-xl mb-2">Bắt đầu thật tình cờ</p>
-              <p class="text-sm leading-relaxed">
+            <div class="inline-block double-border border-border-pink bg-block-light px-8 py-6 rounded-2xl shadow-sm">
+              <p class="font-heading text-accent-pink text-2xl mb-3">Bắt đầu thật tình cờ</p>
+              <p class="text-base leading-relaxed">
                 Vào một ngày đẹp trời, chú rể rep story của cô dâu và câu chuyện của chúng mình bắt đầu từ đó.
               </p>
             </div>
@@ -255,23 +255,23 @@
         </div>
 
         <!-- Hộp trích dẫn ở giữa timeline -->
-        <div class="mb-16 flex justify-center timeline-item">
-          <div class="double-border bg-white px-8 py-8 rounded-2xl max-w-2xl text-center">
-            <p class="font-heading text-accent-pink text-xl md:text-2xl leading-relaxed">
+        <div class="mb-16 flex justify-center timeline-item scroll-animate">
+          <div class="double-border bg-block-light px-10 py-10 rounded-2xl max-w-2xl text-center">
+            <p class="font-heading text-accent-pink text-2xl md:text-3xl leading-relaxed">
               “Tình yêu là sự cảm động, là những ngày cùng nhau đi qua nắng mưa, là người vẫn ở đó chờ mình mỗi khi quay về.”
             </p>
           </div>
         </div>
 
         <!-- Mốc 2: cùng nhau trưởng thành -->
-        <div class="mb-16 md:grid md:grid-cols-2 md:gap-10 items-center timeline-item">
+        <div class="mb-16 md:grid md:grid-cols-2 md:gap-12 items-center timeline-item scroll-animate">
           <div class="md:pr-8 mb-6 md:mb-0 flex justify-center">
             <img src="10.jpg" class="rounded-3xl shadow-lg border border-border-pink uniform-img" alt="">
           </div>
           <div class="md:pl-8">
-            <div class="inline-block double-border bg-accent-pink px-6 py-4 rounded-2xl text-white shadow-md">
-              <p class="font-heading text-2xl mb-2">Cùng nhau trưởng thành</p>
-              <p class="text-sm leading-relaxed text-white/95">
+            <div class="inline-block double-border bg-block-light px-8 py-6 rounded-2xl text-text-dark shadow-md">
+              <p class="font-heading text-3xl mb-3">Cùng nhau trưởng thành</p>
+              <p class="text-base leading-relaxed text-text-dark/85">
                 Chúng mình đã cùng nhau đi qua rất nhiều yêu thương và thử thách. Vui có, buồn có, nhưng cuối cùng vẫn chọn nắm tay nhau.
               </p>
             </div>
@@ -279,14 +279,14 @@
         </div>
 
         <!-- Mốc 3: lời cầu hôn -->
-        <div class="mb-4 md:grid md:grid-cols-2 md:gap-10 items-center timeline-item">
+        <div class="mb-4 md:grid md:grid-cols-2 md:gap-12 items-center timeline-item scroll-animate">
           <div class="md:text-right md:pr-8 order-2 md:order-1">
-            <div class="inline-block double-border bg-accent-pink px-6 py-4 rounded-2xl text-white shadow-md">
-              <p class="font-heading text-2xl mb-2">Lời cầu hôn</p>
-              <p class="text-sm leading-relaxed text-white/95">
+            <div class="inline-block double-border bg-block-light px-8 py-6 rounded-2xl text-text-dark shadow-md">
+              <p class="font-heading text-3xl mb-3">Lời cầu hôn</p>
+              <p class="text-base leading-relaxed text-text-dark/85">
                 Sau khoảng thời gian tìm hiểu và yêu nhau, chú rể đã ngỏ lời cầu hôn cô dâu trong một ngày đầy bất ngờ và hạnh phúc.
               </p>
-              <p class="mt-3 text-xs uppercase tracking-[0.3em] text-white/80">
+              <p class="mt-4 text-xs uppercase tracking-[0.3em] text-text-dark/70">
                 13/04/2025
               </p>
             </div>
@@ -303,63 +303,63 @@
   <section id="countdown" class="py-16 md:py-20 relative">
     <div class="absolute inset-0">
       <img src="12.jpg" class="w-full h-full object-cover" alt="">
-      <div class="absolute inset-0 bg-primary-pink/90 backdrop-blur-sm"></div>
+      <div class="absolute inset-0 bg-block-light/85 backdrop-blur-sm"></div>
     </div>
 
     <div class="relative max-w-5xl mx-auto px-4">
-      <div class="grid md:grid-cols-2 gap-10 bg-white/90 rounded-3xl shadow-2xl overflow-hidden">
+      <div class="grid md:grid-cols-2 gap-12 bg-block-light/90 rounded-3xl shadow-2xl overflow-hidden scroll-animate">
         <!-- Cột nội dung bên trái -->
-        <div class="p-8 md:p-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-border-pink">
-          <p class="font-heading text-3xl md:text-4xl text-accent-pink mb-4">
+        <div class="p-10 md:p-14 flex flex-col justify-center border-b md:border-b-0 md:border-r border-border-pink">
+          <p class="font-heading text-4xl md:text-5xl text-accent-pink mb-5">
             Save The Date
           </p>
-          <p class="text-sm md:text-base text-text-dark/80 mb-4">
+          <p class="text-base md:text-lg text-text-dark/80 mb-5">
             Một lời chúc của bạn chắc chắn sẽ làm cho đám cưới của chúng mình có thêm thật nhiều niềm hạnh phúc.
           </p>
-          <p class="font-heading text-xl text-text-dark mb-2">
+          <p class="font-heading text-4xl text-text-dark mb-3">
             Trung Hiếu &amp; Thanh Phương
           </p>
-          <p class="text-sm text-text-dark/70 mb-6">
-            11 tháng 05 2025 · Trung tâm tiệc cưới sang trọng tại Hà Nội
+          <p class="text-base text-text-dark/70 mb-8 text-center">
+            20 tháng 12 2025
           </p>
-          <div class="flex flex-wrap gap-3">
+          <div class="flex flex-nowrap gap-3">
             <a href="#guestbook"
-               class="px-5 py-2 border border-accent-pink text-accent-pink rounded-full text-xs md:text-sm hover:bg-accent-pink hover:text-white transition">
+               class="px-5 py-2.5 border border-border-pink text-accent-pink rounded-full text-[11px] md:text-xs whitespace-nowrap hover:bg-primary-pink hover:text-white transition">
               GỬI LỜI CHÚC
             </a>
             <button onclick="openRSVP()"
-               class="px-5 py-2 border border-accent-pink text-accent-pink rounded-full text-xs md:text-sm hover:bg-accent-pink hover:text-white transition">
+              class="px-5 py-2.5 border border-border-pink text-accent-pink rounded-full text-[11px] md:text-xs whitespace-nowrap hover:bg-primary-pink hover:text-white transition">
               XÁC NHẬN THAM DỰ
             </button>
           </div>
         </div>
 
         <!-- Cột bên phải hiển thị đồng hồ -->
-        <div class="p-8 md:p-12 flex flex-col items-center justify-center text-center">
-          <p class="font-heading text-2xl text-accent-pink mb-6">
+        <div class="p-10 md:p-14 flex flex-col items-center justify-center text-center">
+          <p class="font-heading text-4xl text-accent-pink mb-6">
             The Big Day!
           </p>
-          <p class="text-sm md:text-base text-text-dark/70 mb-4">11 tháng 05 2025</p>
-          <div class="grid grid-cols-4 gap-3 w-full mb-4">
-            <div class="double-border bg-white rounded-2xl px-2 py-3 flex flex-col items-center justify-center">
-              <span id="days" class="font-heading text-2xl md:text-4xl text-accent-pink">0</span>
-              <span class="text-[11px] mt-1">Ngày</span>
+          <p class="text-base md:text-lg text-text-dark/70 mb-5">20 tháng 12 2025</p>
+          <div class="grid grid-cols-4 gap-4 w-full mb-5">
+            <div class="double-border bg-block-light rounded-2xl px-3 py-4 flex flex-col items-center justify-center">
+              <span id="days" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
+              <span class="text-xs mt-2">Ngày</span>
             </div>
-            <div class="double-border bg-white rounded-2xl px-2 py-3 flex flex-col items-center justify-center">
-              <span id="hours" class="font-heading text-2xl md:text-4xl text-accent-pink">0</span>
-              <span class="text-[11px] mt-1">Giờ</span>
+            <div class="double-border bg-block-light rounded-2xl px-3 py-4 flex flex-col items-center justify-center">
+              <span id="hours" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
+              <span class="text-xs mt-2">Giờ</span>
             </div>
-            <div class="double-border bg-white rounded-2xl px-2 py-3 flex flex-col items-center justify-center">
-              <span id="minutes" class="font-heading text-2xl md:text-4xl text-accent-pink">0</span>
-              <span class="text-[11px] mt-1">Phút</span>
+            <div class="double-border bg-block-light rounded-2xl px-3 py-4 flex flex-col items-center justify-center">
+              <span id="minutes" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
+              <span class="text-xs mt-2">Phút</span>
             </div>
-            <div class="double-border bg-white rounded-2xl px-2 py-3 flex flex-col items-center justify-center">
-              <span id="seconds" class="font-heading text-2xl md:text-4xl text-accent-pink">0</span>
-              <span class="text-[11px] mt-1">Giây</span>
+            <div class="double-border bg-block-light rounded-2xl px-3 py-4 flex flex-col items-center justify-center">
+              <span id="seconds" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
+              <span class="text-xs mt-2">Giây</span>
             </div>
           </div>
-          <p class="text-[12px] text-text-dark/70">
-            Hẹn gặp bạn vào ngày 11/05/2025 để cùng chứng kiến khoảnh khắc chúng mình về chung một nhà.
+          <p class="text-sm text-text-dark/70">
+            Hẹn gặp bạn vào ngày 20/12/2025 để cùng chứng kiến khoảnh khắc chúng mình về chung một nhà.
           </p>
         </div>
       </div>
@@ -367,10 +367,10 @@
   </section>
 
   <!-- KHU 6: Album ảnh cưới -->
-  <section id="gallery" class="py-16 md:py-20 bg-white">
+  <section id="gallery" class="py-16 md:py-20 bg-block-light">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-10">
-        <p class="font-heading text-3xl md:text-4xl text-text-dark mb-3">
+      <div class="text-center mb-12 scroll-animate">
+        <p class="font-heading text-4xl md:text-5xl text-text-dark mb-4">
           Album Hình Cưới
         </p>
         <div class="flex items-center justify-center gap-3 text-accent-pink">
@@ -380,7 +380,7 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 scroll-animate">
         <!-- 9 ảnh demo hiển thị trực tiếp -->
         <template id="gallery-template"></template>
         <script>
@@ -404,51 +404,82 @@
   <section id="events" class="py-16 md:py-24 relative">
     <div class="absolute inset-0">
       <img src="13.jpg" class="w-full h-full object-cover" alt="">
-      <div class="absolute inset-0 bg-primary-pink/85"></div>
+      <div class="absolute inset-0 bg-block-light/85"></div>
     </div>
 
     <div class="relative max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row md:justify-start">
-        <div class="w-full md:w-1/2 bg-accent-pink/80 text-white rounded-3xl shadow-2xl double-border-white px-6 md:px-10 py-10 md:py-12" data-aos="fade-right">
-          <h2 class="font-heading text-3xl md:text-4xl mb-6 text-center md:text-left">
+        <div class="w-full bg-block-light text-text-dark rounded-3xl shadow-2xl double-border px-8 md:px-12 py-12 md:py-14 scroll-animate" data-aos="fade-right">
+          <h2 class="font-heading text-5xl md:text-5xl mb-7 text-center">
             Thông tin sự kiện
           </h2>
-          <p class="text-base md:text-lg text-white/85 mb-8">
+          <p class="text-base md:text-xl text-text-dark/80 mb-9 text-center">
             Rất mong bạn sẽ sắp xếp thời gian để cùng đến chung vui và chứng kiến khoảnh khắc ý nghĩa nhất của chúng mình.
           </p>
 
           <!-- Các thẻ thông tin từng buổi lễ -->
-          <div class="space-y-5">
-            <div class="bg-white text-text-dark rounded-2xl px-4 py-4 border-4 border-border-pink border-double">
-              <div class="flex gap-4 items-center mb-3">
-                <div class="w-12 h-12 rounded-full bg-primary-pink/70 flex items-center justify-center">
-                  <i class="fa-solid fa-champagne-glasses text-accent-pink"></i>
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="bg-block-light text-text-dark rounded-2xl px-6 py-6 border-4 border-border-pink border-double h-full flex flex-col">
+              <div class="flex gap-4 items-start mb-4">
+                <div class="w-12 h-12 rounded-full bg-primary-pink/70 flex items-center justify-center flex-shrink-0">
+                  <i class="fa-solid fa-utensils text-accent-pink"></i>
                 </div>
-                <div class="text-sm md:text-base flex-1">
-                  <p class="font-heading text-base md:text-lg text-accent-pink mb-1">Lễ Thành Hôn</p>
-                  <p>11:00 · 11/05/2025</p>
-                  <p>Trung tâm tiệc cưới ABC, Hà Nội</p>
+                <div class="text-base md:text-lg flex-1 space-y-2">
+                  <p class="font-heading text-4xl md:text-4xl text-accent-pink">Bữa Cơm Thân Mật</p>
+                  <p>18:30 · 18/12/2025</p>
+                  <div>
+                    <p class="font-semibold text-sm md:text-base">Nhà trai</p>
+                    <p class="text-sm md:text-base">Thôn Phú An, H. Đông Anh</p>
+                    <a href="https://maps.google.com/?q=Thon+Phu+An+Dong+Anh" target="_blank" class="inline-flex items-center gap-2 mt-2 text-xs md:text-sm text-accent-pink underline">
+                      <i class="fa-solid fa-location-dot"></i> Google Maps
+                    </a>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-sm md:text-base">Nhà gái</p>
+                    <p class="text-sm md:text-base">Phố Lạch, Q. Ba Đình</p>
+                    <a href="https://maps.google.com/?q=Pho+Lach+Ba+Dinh" target="_blank" class="inline-flex items-center gap-2 mt-2 text-xs md:text-sm text-accent-pink underline">
+                      <i class="fa-solid fa-location-dot"></i> Google Maps
+                    </a>
+                  </div>
                 </div>
               </div>
-              <a href="https://maps.google.com" target="_blank" class="block text-center bg-accent-pink text-white px-3 py-2 rounded-lg text-xs hover:opacity-90 transition">
-                <i class="fa-solid fa-map-location-dot mr-1"></i> Xem bản đồ
-              </a>
+              <div class="mt-auto pt-2 text-sm text-text-dark/60">
+                Cùng quây quần trước ngày trọng đại để chia sẻ niềm vui với gia đình hai bên.
+              </div>
             </div>
 
-            <div class="bg-white text-text-dark rounded-2xl px-4 py-4 border-4 border-border-pink border-double">
-              <div class="flex gap-4 items-center mb-3">
-                <div class="w-12 h-12 rounded-full bg-primary-pink/70 flex items-center justify-center">
-                  <i class="fa-solid fa-ring text-accent-pink"></i>
+            <div class="bg-block-light text-text-dark rounded-2xl px-6 py-6 border-4 border-border-pink border-double h-full flex flex-col">
+              <div class="flex flex-col gap-6 text-base md:text-lg">
+                <div class="flex gap-4 items-start">
+                  <div class="w-12 h-12 rounded-full bg-primary-pink/70 flex items-center justify-center flex-shrink-0">
+                    <i class="fa-solid fa-ring text-accent-pink"></i>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-heading text-4xl md:text-4xl text-accent-pink mb-2">Lễ Vu Quy</p>
+                    <p>08:00 · 19/12/2025</p>
+                    <p>Nhà riêng cô dâu, Hà Nội</p>
+                    <a href="https://maps.google.com/?q=Nha+rieng+co+dau+Ha+Noi" target="_blank" class="inline-flex items-center gap-2 mt-2 text-xs md:text-sm text-accent-pink underline">
+                      <i class="fa-solid fa-location-dot"></i> Google Maps
+                    </a>
+                  </div>
                 </div>
-                <div class="text-sm md:text-base flex-1">
-                  <p class="font-heading text-base md:text-lg text-accent-pink mb-1">Lễ Vu Quy</p>
-                  <p>08:00 · 10/05/2025</p>
-                  <p>Nhà riêng cô dâu, Hà Nội</p>
+                <div class="flex gap-4 items-start border-t border-border-pink pt-4">
+                  <div class="w-12 h-12 rounded-full bg-primary-pink/70 flex items-center justify-center flex-shrink-0">
+                    <i class="fa-solid fa-champagne-glasses text-accent-pink"></i>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-heading text-4xl md:text-4xl text-accent-pink mb-2">Lễ Thành Hôn</p>
+                    <p>11:00 · 20/12/2025</p>
+                    <p>Trung tâm tiệc cưới ABC, Hà Nội</p>
+                    <a href="https://maps.google.com/?q=Trung+tam+tiec+cuoi+ABC+Ha+Noi" target="_blank" class="inline-flex items-center gap-2 mt-2 text-xs md:text-sm text-accent-pink underline">
+                      <i class="fa-solid fa-location-dot"></i> Google Maps
+                    </a>
+                  </div>
                 </div>
               </div>
-              <a href="https://maps.google.com" target="_blank" class="block text-center bg-accent-pink text-white px-3 py-2 rounded-lg text-xs hover:opacity-90 transition">
-                <i class="fa-solid fa-map-location-dot mr-1"></i> Xem bản đồ
-              </a>
+              <div class="mt-auto pt-2 text-sm text-text-dark/60">
+                Hẹn gặp bạn trong hai khoảnh khắc trọng đại: Vu Quy tại nhà gái và Thành Hôn tại trung tâm tiệc cưới.
+              </div>
             </div>
 
             
@@ -459,50 +490,50 @@
   </section>
 
   <!-- KHU 8: Sổ lưu bút -->
-  <section id="guestbook" class="py-16 md:py-20 bg-white relative overflow-hidden">
+  <section id="guestbook" class="py-16 md:py-20 bg-block-light relative overflow-hidden">
     <!-- Trang trí lá ở hai góc -->
     <div class="absolute -left-10 top-10 opacity-20">
       <svg class="leaf-svg" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 45C25 5 55 5 95 5" stroke="#D98D8D" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M5 45C25 5 55 5 95 5" stroke="#b2cee5" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
     <div class="absolute -right-10 bottom-10 opacity-20 rotate-180">
       <svg class="leaf-svg" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 45C25 5 55 5 95 5" stroke="#D98D8D" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M5 45C25 5 55 5 95 5" stroke="#b2cee5" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
 
     <div class="max-w-3xl mx-auto px-4 relative">
-      <div class="text-center mb-8">
-        <h2 class="font-heading text-3xl md:text-4xl mb-2 text-text-dark">Sổ lưu bút</h2>
-        <p class="text-sm text-text-dark/70">
+      <div class="text-center mb-10 scroll-animate">
+        <h2 class="font-heading text-4xl md:text-5xl mb-3 text-text-dark">Sổ lưu bút</h2>
+        <p class="text-base text-text-dark/70">
           Hãy để lại lời chúc, kỷ niệm hoặc bất cứ điều gì bạn muốn gửi đến tụi mình nhé!
         </p>
       </div>
 
-      <form id="guestbookForm" class="double-border rounded-3xl bg-milky px-6 md:px-8 py-8 space-y-6">
+      <form id="guestbookForm" class="double-border rounded-3xl bg-milky px-7 md:px-10 py-10 space-y-7 scroll-animate">
         <div class="grid md:grid-cols-2 gap-6">
           <div>
             <label class="text-xs uppercase tracking-wide text-text-dark/60">Họ và tên</label>
-            <input name="name" type="text" required class="w-full mt-1 bg-transparent border-b border-border-pink focus:outline-none focus:border-accent-pink py-1 text-sm" placeholder="Nhập tên của bạn">
+            <input name="name" type="text" required class="w-full mt-2 bg-transparent border-b border-border-pink focus:outline-none focus:border-text-dark py-2 text-base" placeholder="Nhập tên của bạn">
           </div>
           <div>
             <label class="text-xs uppercase tracking-wide text-text-dark/60">Email / Số điện thoại</label>
-            <input name="contact" type="text" class="w-full mt-1 bg-transparent border-b border-border-pink focus:outline-none focus:border-accent-pink py-1 text-sm" placeholder="(Không bắt buộc)">
+            <input name="contact" type="text" class="w-full mt-2 bg-transparent border-b border-border-pink focus:outline-none focus:border-text-dark py-2 text-base" placeholder="(Không bắt buộc)">
           </div>
         </div>
         <div>
           <label class="text-xs uppercase tracking-wide text-text-dark/60">Lời chúc</label>
-          <textarea name="message" rows="4" required class="w-full mt-1 bg-transparent border border-border-pink focus:outline-none focus:border-accent-pink rounded-2xl px-3 py-2 text-sm" placeholder="Viết vài dòng cho tụi mình nhé..."></textarea>
+          <textarea name="message" rows="4" required class="w-full mt-2 bg-transparent border border-border-pink focus:outline-none focus:border-text-dark rounded-2xl px-4 py-3 text-base" placeholder="Viết vài dòng cho tụi mình nhé..."></textarea>
         </div>
         <div class="text-center">
           <button id="guestbookSubmit" type="submit"
-                  class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-accent-pink text-accent-pink text-xs md:text-sm hover:bg-accent-pink hover:text-white transition">
+                  class="inline-flex items-center gap-3 px-8 py-3 rounded-full border border-border-pink text-accent-pink text-sm md:text-base hover:bg-primary-pink hover:text-white transition">
             <i class="fa-regular fa-paper-plane"></i>
             GỬI LỜI CHÚC
           </button>
-          <div id="guestbookThanks" class="hidden text-sm text-accent-pink mt-3">Cảm ơn bạn đã gửi lời chúc!</div>
-          <div id="guestbookError" class="hidden text-xs text-red-600 mt-2">Vui lòng nhập tên và lời chúc.</div>
+          <div id="guestbookThanks" class="hidden text-base text-accent-pink mt-4">Cảm ơn bạn đã gửi lời chúc!</div>
+          <div id="guestbookError" class="hidden text-sm text-red-600 mt-3">Vui lòng nhập tên và lời chúc.</div>
           <div id="guestbookList" class="mt-6 space-y-3 max-w-2xl mx-auto text-left"></div>
         </div>
       </form>
@@ -510,24 +541,24 @@
   </section>
 
   <!-- KHU 9: Hộp mừng cưới bằng QR -->
-  <section id="qr" class="py-16 md:py-20 bg-[#fff6f4]">
+  <section id="qr" class="py-16 md:py-20 bg-block-light">
     <div class="max-w-5xl mx-auto px-4">
-      <div class="text-center mb-10">
-        <h2 class="font-heading text-3xl md:text-4xl mb-2 text-text-dark">Hộp mừng cưới</h2>
-        <p class="text-sm text-text-dark/70 max-w-2xl mx-auto">
+      <div class="text-center mb-12 scroll-animate">
+        <h2 class="font-heading text-4xl md:text-5xl mb-3 text-text-dark">Hộp mừng cưới</h2>
+        <p class="text-base text-text-dark/70 max-w-2xl mx-auto">
           Sự hiện diện của bạn là món quà quý giá nhất. Nếu không thể tham dự hoặc muốn gửi lời chúc qua hình thức online,
           bạn có thể quét mã QR dưới đây.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 gap-8 scroll-animate">
         <!-- Thẻ QR nhà trai -->
-        <div class="bg-accent-pink rounded-3xl text-white p-6 md:p-8 double-border-white">
-          <h3 class="font-heading text-xl mb-2 text-center">Nhà trai</h3>
-          <p class="text-xs text-center mb-4 text-white/80">Trung Hiếu</p>
-          <div class="border border-white rounded-2xl p-4 flex flex-col items-center gap-3 bg-white/5">
-            <img src="7.jpg" class="rounded-xl bg-white" alt="QR Groom">
-            <div class="text-[12px] space-y-1 text-center">
+        <div class="bg-block-light rounded-3xl text-text-dark p-8 md:p-10 double-border">
+          <h3 class="font-heading text-4xl md:text-5xl mb-3 text-center">Nhà trai</h3>
+          <p class="text-base md:text-lg text-center mb-5 text-text-dark/70">Trung Hiếu</p>
+          <div class="border border-border-pink rounded-2xl p-5 flex flex-col items-center gap-4 bg-block-light/60">
+            <img src="7.jpg" class="rounded-xl bg-block-light" alt="QR Groom">
+            <div class="text-sm space-y-1 text-center">
               <p>Ngân hàng: <span class="font-semibold">A</span></p>
               <p>Chủ tài khoản: <span class="font-semibold">NGUYEN TRUNG HIEU</span></p>
               <p>Số tài khoản: <span class="font-semibold tracking-widest">0123 456 789</span></p>
@@ -537,12 +568,12 @@
         </div>
 
         <!-- Thẻ QR nhà gái -->
-        <div class="bg-accent-pink rounded-3xl text-white p-6 md:p-8 double-border-white">
-          <h3 class="font-heading text-xl mb-2 text-center">Nhà gái</h3>
-          <p class="text-xs text-center mb-4 text-white/80">Thanh Phương</p>
-          <div class="border border-white rounded-2xl p-4 flex flex-col items-center gap-3 bg-white/5">
-            <img src="8.jpg" class="rounded-xl bg-white" alt="QR Bride">
-            <div class="text-[12px] space-y-1 text-center">
+        <div class="bg-block-light rounded-3xl text-text-dark p-8 md:p-10 double-border">
+          <h3 class="font-heading text-4xl md:text-5xl mb-3 text-center">Nhà gái</h3>
+          <p class="text-base md:text-lg text-center mb-5 text-text-dark/70">Thanh Phương</p>
+          <div class="border border-border-pink rounded-2xl p-5 flex flex-col items-center gap-4 bg-block-light/60">
+            <img src="8.jpg" class="rounded-xl bg-block-light" alt="QR Bride">
+            <div class="text-sm space-y-1 text-center">
               <p>Ngân hàng: <span class="font-semibold">B</span></p>
               <p>Chủ tài khoản: <span class="font-semibold">NGUYEN THANH PHUONG</span></p>
               <p>Số tài khoản: <span class="font-semibold tracking-widest">123456789</span></p>
@@ -556,54 +587,60 @@
 
 </main>
 
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Ảnh cưới phóng to" aria-hidden="true">
+  <img id="lightbox-image" alt="Ảnh cưới phóng to" />
+  <button type="button" id="lightbox-close" aria-label="Đóng ảnh phóng to">&times;</button>
+</div>
+
+
 <!-- MODAL RSVP xác nhận tham dự -->
 <div id="rsvpModal" class="modal">
-  <div class="bg-white rounded-3xl max-w-md w-full mx-4 p-6 md:p-8 relative shadow-2xl">
+  <div class="bg-block-light rounded-3xl max-w-md w-full mx-4 p-7 md:p-10 relative shadow-2xl scroll-animate">
     <button onclick="closeRSVP()" class="absolute top-4 right-4 text-2xl text-text-dark/50 hover:text-accent-pink transition">
       &times;
     </button>
-    <h2 class="font-heading text-2xl md:text-3xl text-center mb-6 text-accent-pink">Xác nhận tham dự</h2>
-    <form id="rsvpForm" class="space-y-4">
+    <h2 class="font-heading text-3xl md:text-4xl text-center mb-7 text-accent-pink">Xác nhận tham dự</h2>
+    <form id="rsvpForm" class="space-y-5">
       <div>
         <label class="text-xs uppercase tracking-wide text-text-dark/60">Họ và tên *</label>
-        <input name="name" type="text" required class="w-full mt-1 bg-transparent border-b border-border-pink focus:outline-none focus:border-accent-pink py-2 text-sm" placeholder="Nhập họ tên của bạn">
+        <input name="name" type="text" required class="w-full mt-2 bg-transparent border-b border-border-pink focus:outline-none focus:border-text-dark py-2 text-base" placeholder="Nhập họ tên của bạn">
       </div>
       <div>
         <label class="text-xs uppercase tracking-wide text-text-dark/60">Số điện thoại</label>
-        <input name="phone" type="tel" class="w-full mt-1 bg-transparent border-b border-border-pink focus:outline-none focus:border-accent-pink py-2 text-sm" placeholder="Số điện thoại">
+        <input name="phone" type="tel" class="w-full mt-2 bg-transparent border-b border-border-pink focus:outline-none focus:border-text-dark py-2 text-base" placeholder="Số điện thoại">
       </div>
       <div>
         <label class="text-xs uppercase tracking-wide text-text-dark/60">Số người đi cùng</label>
-        <input name="guests" type="number" min="1" max="10" value="1" class="w-full mt-1 bg-transparent border-b border-border-pink focus:outline-none focus:border-accent-pink py-2 text-sm" placeholder="1">
+        <input name="guests" type="number" min="1" max="10" value="1" class="w-full mt-2 bg-transparent border-b border-border-pink focus:outline-none focus:border-text-dark py-2 text-base" placeholder="1">
       </div>
       <div>
         <label class="text-xs uppercase tracking-wide text-text-dark/60">Lưu ý (nếu có)</label>
-        <textarea name="note" rows="3" class="w-full mt-1 bg-transparent border border-border-pink focus:outline-none focus:border-accent-pink rounded-2xl px-3 py-2 text-sm" placeholder="Ví dụ: Ăn chay, dị ứng thực phẩm..."></textarea>
+        <textarea name="note" rows="3" class="w-full mt-2 bg-transparent border border-border-pink focus:outline-none focus:border-text-dark rounded-2xl px-4 py-3 text-base" placeholder="Ví dụ: Ăn chay, dị ứng thực phẩm..."></textarea>
       </div>
       <div class="text-center pt-2">
-        <button type="submit" class="px-8 py-3 bg-accent-pink text-white rounded-full text-sm hover:opacity-90 transition">
+        <button type="submit" class="px-9 py-3 bg-block-light border border-border-pink text-accent-pink rounded-full text-base hover:bg-primary-pink hover:text-white transition">
           <i class="fa-solid fa-check mr-2"></i>Xác nhận
         </button>
       </div>
-      <div id="rsvpThanks" class="hidden text-center text-sm text-accent-pink mt-3">Cảm ơn bạn đã xác nhận tham dự! Hẹn gặp bạn trong ngày vui.</div>
+      <div id="rsvpThanks" class="hidden text-center text-base text-accent-pink mt-4">Cảm ơn bạn đã xác nhận tham dự! Hẹn gặp bạn trong ngày vui.</div>
     </form>
   </div>
 </div>
 
 <!-- KHU 10: Chân trang cảm ơn -->
-<footer class="bg-accent-pink text-white py-10 md:py-12">
-  <div class="max-w-4xl mx-auto px-4 text-center">
+<footer class="bg-primary-pink border-t border-border-pink text-text-dark py-10 md:py-12">
+  <div class="max-w-4xl mx-auto px-4 text-center scroll-animate">
     <!-- Leaf around name -->
     <div class="flex items-center justify-center gap-3 mb-4">
       <svg class="leaf-svg rotate-180 opacity-80" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 45C25 5 55 5 95 5" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M5 45C25 5 55 5 95 5" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
-      <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Trung Hiếu &amp; Thanh Phương</h2>
+      <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Trung Hiếu &amp; Thanh Phương</h2>
       <svg class="leaf-svg opacity-80" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 45C25 5 55 5 95 5" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M5 45C25 5 55 5 95 5" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
-    <p class="text-xs md:text-sm text-white/80">
+    <p class="text-sm md:text-base text-text-dark/80">
       Cảm ơn bạn vì đã là một phần trong hành trình yêu thương của chúng mình.
     </p>
   </div>
@@ -613,28 +650,28 @@
 <div class="fixed bottom-5 right-5 z-50 flex flex-col gap-3">
   <!-- Menu / scroll to top -->
   <button id="btn-top"
-          class="w-12 h-12 rounded-full bg-accent-pink shadow-lg text-white flex items-center justify-center hover:scale-105 transition"
+      class="w-12 h-12 rounded-full bg-block-light border border-border-pink shadow-lg text-accent-pink flex items-center justify-center hover:scale-105 transition"
           title="Về đầu trang">
       <i class="fa-solid fa-house"></i>
   </button>
 
   <!-- Gift / scroll to QR -->
   <button id="btn-gift"
-          class="w-12 h-12 rounded-full bg-accent-pink shadow-lg text-white flex items-center justify-center hover:scale-105 transition"
+      class="w-12 h-12 rounded-full bg-block-light border border-border-pink shadow-lg text-accent-pink flex items-center justify-center hover:scale-105 transition"
           title="Đến phần mừng cưới">
     <i class="fa-solid fa-gift"></i>
   </button>
 
     <!-- Comment / scroll to guestbook -->
     <button id="btn-comment"
-            class="w-12 h-12 rounded-full bg-accent-pink shadow-lg text-white flex items-center justify-center hover:scale-105 transition"
+          class="w-12 h-12 rounded-full bg-block-light border border-border-pink shadow-lg text-accent-pink flex items-center justify-center hover:scale-105 transition"
             title="Gửi lời chúc">
       <i class="fa-regular fa-comment"></i>
     </button>
 
   <!-- Music toggle -->
   <button id="btn-music"
-          class="w-12 h-12 rounded-full bg-accent-pink shadow-lg text-white flex items-center justify-center hover:scale-105 transition"
+      class="w-12 h-12 rounded-full bg-block-light border border-border-pink shadow-lg text-accent-pink flex items-center justify-center hover:scale-105 transition"
           title="Bật / tắt nhạc nền">
     <i id="music-icon" class="fa-solid fa-music"></i>
   </button>
@@ -649,6 +686,18 @@
     once: true
   });
 
+  const animatedElements = document.querySelectorAll('.scroll-animate');
+  const floatObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      } else {
+        entry.target.classList.remove('is-visible');
+      }
+    });
+  }, { threshold: 0.2 });
+  animatedElements.forEach(element => floatObserver.observe(element));
+
   // Theo dõi các mốc timeline: vào khung nhìn thì thêm class visible
   const timelineItems = document.querySelectorAll('.timeline-item');
   const observer = new IntersectionObserver((entries) => {
@@ -656,7 +705,6 @@
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       } else {
-        // Remove visible class when element leaves viewport
         entry.target.classList.remove('visible');
       }
     });
@@ -665,7 +713,7 @@
 
   // Bộ đếm ngược đến ngày cưới
   (function () {
-    const targetDate = new Date('2025-05-11T00:00:00+07:00').getTime();
+    const targetDate = new Date('2025-12-20T00:00:00+07:00').getTime();
     function updateCountdown() {
       const now = Date.now();
       const isPast = now > targetDate;
@@ -690,6 +738,10 @@
   const btnMusic = document.getElementById('btn-music');
   const musicIcon = document.getElementById('music-icon');
   const audio = document.getElementById('bg-music');
+  const galleryImages = document.querySelectorAll('#gallery img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxClose = document.getElementById('lightbox-close');
 
   btnTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -717,6 +769,54 @@
       musicIcon.classList.remove('spin-slow');
     }
   });
+
+  if (galleryImages.length && lightbox && lightboxImage && lightboxClose) {
+    let lastFocusedElement = null;
+    const showLightbox = (src) => {
+      lightboxImage.src = src;
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      lightboxClose.focus({ preventScroll: true });
+    };
+    const hideLightbox = () => {
+      lightbox.classList.remove('active');
+      lightboxImage.src = '';
+      lightbox.setAttribute('aria-hidden', 'true');
+      if (lastFocusedElement) {
+        lastFocusedElement.focus({ preventScroll: true });
+      }
+      lastFocusedElement = null;
+    };
+    galleryImages.forEach(img => {
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      if (!img.getAttribute('aria-label')) {
+        img.setAttribute('aria-label', 'Phóng to ảnh cưới');
+      }
+      img.addEventListener('click', () => {
+        lastFocusedElement = img;
+        showLightbox(img.src);
+      });
+      img.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          lastFocusedElement = img;
+          showLightbox(img.src);
+        }
+      });
+    });
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) {
+        hideLightbox();
+      }
+    });
+    lightboxClose.addEventListener('click', hideLightbox);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        hideLightbox();
+      }
+    });
+  }
 
   // Áp dụng hiệu ứng chữ trôi nhẹ cho toàn bộ nội dung
   // Không áp hiệu ứng trôi lơ lửng toàn trang

@@ -17,7 +17,8 @@ const PRIVATE_KEY = (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n')
 const RSVP_SHEET = process.env.GOOGLE_RSVP_SHEET || 'RSVP';
 const GUESTBOOK_SHEET = process.env.GOOGLE_GUESTBOOK_SHEET || 'Guestbook';
 
-const useGoogleSheets = Boolean(SHEET_ID && SERVICE_ACCOUNT_EMAIL && PRIVATE_KEY);
+const hasGoogleConfig = Boolean(SHEET_ID && SERVICE_ACCOUNT_EMAIL && PRIVATE_KEY);
+let useGoogleSheets = hasGoogleConfig;
 
 const DATA_DIR = path.join(ROOT, 'data');
 const RSVP_FILE = path.join(DATA_DIR, 'rsvp.json');
@@ -48,6 +49,20 @@ function safeReadJson(file) {
 
 function safeWriteJson(file, data) {
   fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf8');
+}
+
+function formatTimestampGMT7(value) {
+  const parsed = value ? new Date(value) : new Date();
+  const baseDate = Number.isNaN(parsed.getTime()) ? new Date() : parsed;
+  const offsetMinutes = 7 * 60;
+  const local = new Date(baseDate.getTime() + offsetMinutes * 60 * 1000);
+  const year = local.getUTCFullYear();
+  const month = String(local.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(local.getUTCDate()).padStart(2, '0');
+  const hours = String(local.getUTCHours()).padStart(2, '0');
+  const minutes = String(local.getUTCMinutes()).padStart(2, '0');
+  const seconds = String(local.getUTCSeconds()).padStart(2, '0');
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} GMT+7`;
 }
 
 // -------------------------
@@ -144,67 +159,88 @@ async function fetchGuestbookRows(limit = 10) {
 // -------------------------
 // Lớp trừu tượng để chọn nơi lưu: Sheets hoặc JSON
 // -------------------------
-const storage = useGoogleSheets
-  ? {
-      init: async () => {
-        await Promise.all(Object.keys(SHEET_HEADERS).map((title) => ensureSheetExists(title)));
-      },
-      saveRsvp: async (entry) => {
-        await appendRow(RSVP_SHEET, [entry.timestamp, entry.name, entry.phone, entry.guests, entry.note]);
-      },
-      saveGuestbook: async (entry) => {
-        await appendRow(GUESTBOOK_SHEET, [entry.timestamp, entry.name, entry.contact, entry.message]);
-      },
-      getGuestbook: async (limit) => fetchGuestbookRows(limit)
-    }
-  : {
-      init: async () => {
-        ensureDataFiles();
-      },
-      saveRsvp: async (entry) => {
-        const list = safeReadJson(RSVP_FILE);
-        list.unshift(entry);
-        safeWriteJson(RSVP_FILE, list);
-      },
-      saveGuestbook: async (entry) => {
-        const list = safeReadJson(GUESTBOOK_FILE);
-        list.unshift(entry);
-        safeWriteJson(GUESTBOOK_FILE, list);
-      },
-      getGuestbook: async (limit) => {
-        const list = safeReadJson(GUESTBOOK_FILE);
-        return list.slice(0, limit);
-      }
-    };
+function createGoogleStorage() {
+  return {
+    init: async () => {
+      await Promise.all(Object.keys(SHEET_HEADERS).map((title) => ensureSheetExists(title)));
+    },
+    saveRsvp: async (entry) => {
+      await appendRow(RSVP_SHEET, [entry.timestamp, entry.name, entry.phone, entry.guests, entry.note]);
+    },
+    saveGuestbook: async (entry) => {
+      await appendRow(GUESTBOOK_SHEET, [entry.timestamp, entry.name, entry.contact, entry.message]);
+    },
+    getGuestbook: async (limit) => fetchGuestbookRows(limit)
+  };
+}
 
-storage
-  .init()
-  .then(() => {
+function createLocalStorage() {
+  return {
+    init: async () => {
+      ensureDataFiles();
+    },
+    saveRsvp: async (entry) => {
+      const list = safeReadJson(RSVP_FILE);
+      list.unshift(entry);
+      safeWriteJson(RSVP_FILE, list);
+    },
+    saveGuestbook: async (entry) => {
+      const list = safeReadJson(GUESTBOOK_FILE);
+      list.unshift(entry);
+      safeWriteJson(GUESTBOOK_FILE, list);
+    },
+    getGuestbook: async (limit) => {
+      const list = safeReadJson(GUESTBOOK_FILE);
+      return list.slice(0, limit);
+    }
+  };
+}
+
+let storage = useGoogleSheets ? createGoogleStorage() : createLocalStorage();
+
+async function initializeStorage() {
+  try {
+    await storage.init();
     if (useGoogleSheets) {
       console.log('Google Sheets storage ready');
     } else {
       console.log('Local JSON storage ready');
     }
-  })
-  .catch((err) => {
+  } catch (err) {
     console.error('Storage initialisation failed', err);
-  });
+    if (useGoogleSheets) {
+      console.warn('Falling back to local JSON storage. Data will be kept on disk.');
+      useGoogleSheets = false;
+      sheetsClientPromise = null;
+      storage = createLocalStorage();
+      try {
+        await storage.init();
+        console.log('Local JSON storage ready');
+      } catch (fallbackErr) {
+        console.error('Fallback storage initialisation failed', fallbackErr);
+      }
+    }
+  }
+}
+
+initializeStorage();
 
 // -------------------------
 // Định nghĩa API phục vụ frontend
 // -------------------------
 app.post('/api/rsvp', async (req, res) => {
-  const { name, phone = '', guests = 1, note = '', timestamp = new Date().toISOString() } = req.body || {};
+  const { name, phone = '', guests = 1, note = '', timestamp } = req.body || {};
   if (!name || String(name).trim().length === 0) {
     return res.status(400).json({ ok: false, error: 'Name is required' });
   }
+  const formattedTimestamp = formatTimestampGMT7(timestamp);
   const entry = {
     name: String(name).trim(),
     phone: String(phone).trim(),
     guests: Number(guests) || 1,
     note: String(note).trim(),
     type: 'RSVP',
-    timestamp
+    timestamp: formattedTimestamp
   };
   try {
     await storage.saveRsvp(entry);
@@ -216,16 +252,17 @@ app.post('/api/rsvp', async (req, res) => {
 });
 
 app.post('/api/guestbook', async (req, res) => {
-  const { name, contact = '', message, timestamp = new Date().toISOString() } = req.body || {};
+  const { name, contact = '', message, timestamp } = req.body || {};
   if (!name || !message || String(name).trim().length === 0 || String(message).trim().length === 0) {
     return res.status(400).json({ ok: false, error: 'Name and message are required' });
   }
+  const formattedTimestamp = formatTimestampGMT7(timestamp);
   const entry = {
     name: String(name).trim(),
     contact: String(contact).trim(),
     message: String(message).trim(),
     type: 'GUESTBOOK',
-    timestamp
+    timestamp: formattedTimestamp
   };
   try {
     await storage.saveGuestbook(entry);

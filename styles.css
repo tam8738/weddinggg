@@ -1,8 +1,12 @@
+html {
+  font-size: 18px;
+}
 body {
-  font-family: 'Montserrat', sans-serif; /* chữ thanh thoát, dễ đọc */
-  color: #4A4A4A; /* tông xám trung tính tăng độ tương phản */
+  font-family: 'Pacifico', cursive; /* kiểu viết tay theo yêu cầu */
+  color: #000000; /* chữ đen */
   scroll-behavior: smooth; /* cuộn trang mượt khi nhảy anchor */
-  background-color: #fff8f2; /* nền milky giữ bảng màu dịu */
+  background-color: #f9fbfa; /* nền tổng thể */
+  line-height: 1.6;
 }
 
 
@@ -15,7 +19,7 @@ body {
 /* Bộ khung viền kép dùng lại nhiều nơi (thẻ thông tin, lời chúc, v.v.) */
 .double-border {
   position: relative;
-  border: 1px solid #e04545; /* viền ngoài màu hồng chủ đạo */
+  border: 1px solid #b2cee5; /* viền ngoài theo tông xanh pastel */
 }
 .double-border:before {
   content: "";
@@ -24,7 +28,7 @@ body {
   bottom: 8px;
   left: 8px;
   right: 8px;
-  border: 1px solid #e04545;
+  border: 1px solid #b2cee5;
   pointer-events: none; /* không chặn thao tác vào nội dung */
 }
 .double-border-white {
@@ -87,7 +91,7 @@ body {
   position: fixed;
   top: -10vh; /* tạo trái tim ngay mép trên */
   font-size: 20px; /* kích thước gốc, JS sẽ random thêm */
-  color: #e04545; /* giữ bảng màu chủ đạo */
+  color: #b2cee5; /* giữ màu nền tông dịu */
   opacity: 0.55;
   animation: fall linear infinite;
   z-index: 9999; /* luôn nổi trên cùng */
@@ -150,7 +154,7 @@ body {
   height: 100%;
 }
 .overlay-border line {
-  stroke: #e04545;
+  stroke: #b2cee5;
   stroke-width: 0.35; /* viền mảnh */
   stroke-linecap: square;
   fill: none;
@@ -158,10 +162,10 @@ body {
   stroke-dashoffset: 100; /* bắt đầu ở trạng thái chưa vẽ */
 }
 .overlay-border .inner-frame {
-  stroke: #e04545;
+  stroke: #b2cee5;
   transform: translate(0, 0);
 }
-.font-art { font-family: 'Great Vibes', cursive; /* chữ ký mềm mại */ }
+.font-art { font-family: 'Corinthia', cursive; /* chữ ký mềm mại mới */ }
 .uniform-img { width:100%; height:420px; object-fit:cover; /* đồng bộ tỉ lệ ảnh */ }
 @keyframes fadeInUp { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
 @media (max-width: 767px) {
@@ -172,7 +176,7 @@ body {
     inset: auto;
     opacity: 1 !important;
     transform: none !important;
-    background: #ffffff;
+    background: #e9f5ff;
     padding: 1rem; /* thêm đệm để dễ đọc */
     box-shadow: none;
     animation: fadeInUp 0.5s ease both;
@@ -188,6 +192,60 @@ body {
 }
 @keyframes drawBorder {
   to { stroke-dashoffset: 0; }
+}
+@media (max-width: 767px) {
+  html { font-size: 17px; }
+}
+/* Hiệu ứng trôi hội tụ khi phần tử xuất hiện */
+.scroll-animate {
+  opacity: 0;
+  transform: scale(0.9);
+  filter: blur(8px);
+  transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.8s ease, filter 0.8s ease;
+}
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+#gallery img {
+  cursor: zoom-in;
+}
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 2rem;
+}
+.lightbox.active {
+  display: flex;
+}
+.lightbox img {
+  max-width: min(90vw, 960px);
+  max-height: 90vh;
+  border: 6px solid #b2cee5;
+  background: #f9fbfa;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+.lightbox button {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: #b2cee5;
+  color: #045493;
+  border: none;
+  width: 42px;
+  height: 42px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.lightbox button:hover {
+  opacity: 0.8;
 }
 /* Hiệu ứng timeline khi cuộn đến các mốc chuyện tình */
 .timeline-item {
