@@ -677,6 +677,10 @@
   </button>
 </div>
 
+<div id="music-error" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-block-light border border-border-pink px-4 py-2 rounded hidden text-sm text-accent-pink shadow-lg z-50">
+  Trình duyệt chặn phát nhạc. Vui lòng thử lại.
+</div>
+
 <!-- SCRIPTS -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
@@ -760,9 +764,20 @@
   let isPlaying = false;
   btnMusic.addEventListener('click', () => {
     if (!isPlaying) {
-      audio.play().catch(() => {});
-      isPlaying = true;
-      musicIcon.classList.add('spin-slow');
+      if (audio.paused) {
+        audio.currentTime = 0;
+      }
+      audio.play().then(() => {
+        isPlaying = true;
+        musicIcon.classList.add('spin-slow');
+      }).catch((err) => {
+        console.warn('Không thể phát nhạc nền:', err);
+        const message = document.getElementById('music-error');
+        if (message) {
+          message.classList.remove('hidden');
+          setTimeout(() => message.classList.add('hidden'), 4000);
+        }
+      });
     } else {
       audio.pause();
       isPlaying = false;
