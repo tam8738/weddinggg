@@ -166,10 +166,13 @@ body {
   transform: translate(0, 0);
 }
 .font-art { font-family: 'Corinthia', cursive; /* chữ ký mềm mại mới */ }
+#couple .rounded-3xl { aspect-ratio: 1 / 1; }
+#couple .uniform-img { width: 100%; height: 100%; object-fit: cover; }
 .uniform-img { width:100%; height:420px; object-fit:cover; /* đồng bộ tỉ lệ ảnh */ }
 @keyframes fadeInUp { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
 @media (max-width: 767px) {
   .uniform-img { height: 320px; /* giảm chiều cao ảnh trên màn nhỏ */ }
+  #couple .uniform-img { height: auto; }
   .person-photo .overlay-border { display: none; /* bỏ viền động để giao diện nhẹ hơn */ }
   .person-photo > .absolute.inset-3 {
     position: static;
