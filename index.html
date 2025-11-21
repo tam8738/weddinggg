@@ -15,12 +15,12 @@
       theme: {
         extend: {
           colors: {
-            'primary-pink': '#b2cee5',
+            'primary-pink': '#adcef5',
             'accent-pink': '#045493',
             'text-dark': '#000000',
-            'border-pink': '#b2cee5',
+            'border-pink': '#045493',
             'milky': '#f9fbfa',
-            'block-light': '#e9f5ff'
+            'block-light': '#cde7ff'
           },
           fontFamily: {
             heading: ['Corinthia', 'cursive'],
@@ -77,8 +77,8 @@
       <img src="img/6.jpg" class="w-full h-full object-cover opacity-40" alt="Wedding photo 3">
     </div>
 
-    <!-- Lớp phủ màu để cân bằng ánh sáng -->
-    <div class="absolute inset-0 bg-block-light/80"></div>
+    <!-- Lớp phủ nền sử dụng texture nen.jpg -->
+    <div class="absolute inset-0 hero-overlay" aria-hidden="true"></div>
 
     <!-- Nội dung chính bên trong hero -->
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 scroll-animate">
@@ -104,16 +104,18 @@
   <!-- KHU 2: Thông tin cô dâu chú rể -->
   <section id="couple" class="py-16 md:py-20 bg-milky">
     <div class="max-w-6xl mx-auto px-4 scroll-animate">
-      <div class="grid md:grid-cols-2 gap-12 items-start relative">
-        <!-- Trái tim nhấn mạnh tình yêu ở giữa -->
-        <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-20">
-          <div class="w-16 h-16 rounded-full bg-primary-pink text-white flex items-center justify-center animate-pulse shadow-lg">
-            <i class="fa-solid fa-heart text-2xl"></i>
+      <div class="couple-grid grid md:grid-cols-2 gap-10 md:gap-y-0 md:gap-x-0 items-start relative">
+        <!-- Trái tim nối hai thẻ nhân vật -->
+        <div class="couple-connector" aria-hidden="true">
+          <span class="couple-connector__line"></span>
+          <div class="couple-connector__heart">
+            <i class="fa-solid fa-heart"></i>
           </div>
+          <span class="couple-connector__line"></span>
         </div>
 
         <!-- Thông tin chú rể -->
-        <div class="group relative person-photo scroll-animate" data-aos="fade-right">
+        <div class="group relative person-photo scroll-animate md:justify-self-end" data-aos="fade-right">
           <div class="rounded-3xl overflow-hidden shadow-lg border border-border-pink bg-block-light">
             <img src="img/7.jpg" class="uniform-img" alt="Groom">
           </div>
@@ -152,7 +154,7 @@
         </div>
 
         <!-- Thông tin cô dâu -->
-        <div class="group relative person-photo scroll-animate" data-aos="fade-left">
+        <div class="group relative person-photo scroll-animate md:justify-self-start" data-aos="fade-left">
           <div class="rounded-3xl overflow-hidden shadow-lg border border-border-pink bg-block-light">
             <img src="img/8.jpg" class="uniform-img" alt="Bride">
           </div>
@@ -367,7 +369,7 @@
   </section>
 
   <!-- KHU 6: Album ảnh cưới -->
-  <section id="gallery" class="py-16 md:py-20 bg-block-light">
+  <section id="gallery" class="py-16 md:py-20 section-bg-nen">
     <div class="max-w-6xl mx-auto px-4">
       <div class="text-center mb-12 scroll-animate">
         <p class="font-heading text-4xl md:text-5xl text-text-dark mb-4">
@@ -490,16 +492,16 @@
   </section>
 
   <!-- KHU 8: Sổ lưu bút -->
-  <section id="guestbook" class="py-16 md:py-20 bg-block-light relative overflow-hidden">
+  <section id="guestbook" class="py-16 md:py-20 section-bg-nen relative overflow-hidden">
     <!-- Trang trí lá ở hai góc -->
     <div class="absolute -left-10 top-10 opacity-20">
       <svg class="leaf-svg" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 45C25 5 55 5 95 5" stroke="#b2cee5" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M5 45C25 5 55 5 95 5" stroke="#045493" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
     <div class="absolute -right-10 bottom-10 opacity-20 rotate-180">
       <svg class="leaf-svg" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 45C25 5 55 5 95 5" stroke="#b2cee5" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M5 45C25 5 55 5 95 5" stroke="#045493" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
 
@@ -541,7 +543,7 @@
   </section>
 
   <!-- KHU 9: Hộp mừng cưới bằng QR -->
-  <section id="qr" class="py-16 md:py-20 bg-block-light">
+  <section id="qr" class="py-16 md:py-20 section-bg-nen">
     <div class="max-w-5xl mx-auto px-4">
       <div class="text-center mb-12 scroll-animate">
         <h2 class="font-heading text-4xl md:text-5xl mb-3 text-text-dark">Hộp mừng cưới</h2>
@@ -553,11 +555,11 @@
 
       <div class="grid md:grid-cols-2 gap-8 scroll-animate">
         <!-- Thẻ QR nhà trai -->
-        <div class="bg-block-light rounded-3xl text-text-dark p-8 md:p-10 double-border">
+        <div class="bg-block-light rounded-3xl text-text-dark p-6 md:p-8 double-border max-w-sm mx-auto">
           <h3 class="font-heading text-4xl md:text-5xl mb-3 text-center">Nhà trai</h3>
           <p class="text-base md:text-lg text-center mb-5 text-text-dark/70">Trung Hiếu</p>
           <div class="border border-border-pink rounded-2xl p-5 flex flex-col items-center gap-4 bg-block-light/60">
-            <img src="img/7.jpg" class="rounded-xl bg-block-light" alt="QR Groom">
+            <img src="img/7.jpg" class="rounded-xl bg-block-light qr-image" alt="QR Groom">
             <div class="text-sm space-y-1 text-center">
               <p>Ngân hàng: <span class="font-semibold">A</span></p>
               <p>Chủ tài khoản: <span class="font-semibold">NGUYEN TRUNG HIEU</span></p>
@@ -568,11 +570,11 @@
         </div>
 
         <!-- Thẻ QR nhà gái -->
-        <div class="bg-block-light rounded-3xl text-text-dark p-8 md:p-10 double-border">
+        <div class="bg-block-light rounded-3xl text-text-dark p-6 md:p-8 double-border max-w-sm mx-auto">
           <h3 class="font-heading text-4xl md:text-5xl mb-3 text-center">Nhà gái</h3>
           <p class="text-base md:text-lg text-center mb-5 text-text-dark/70">Thanh Phương</p>
           <div class="border border-border-pink rounded-2xl p-5 flex flex-col items-center gap-4 bg-block-light/60">
-            <img src="img/8.jpg" class="rounded-xl bg-block-light" alt="QR Bride">
+            <img src="img/8.jpg" class="rounded-xl bg-block-light qr-image" alt="QR Bride">
             <div class="text-sm space-y-1 text-center">
               <p>Ngân hàng: <span class="font-semibold">B</span></p>
               <p>Chủ tài khoản: <span class="font-semibold">NGUYEN THANH PHUONG</span></p>

@@ -6,7 +6,29 @@ body {
   color: #000000; /* chữ đen */
   scroll-behavior: smooth; /* cuộn trang mượt khi nhảy anchor */
   background-color: #f9fbfa; /* nền tổng thể */
+  background-image: url('img/nen.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
   line-height: 1.6;
+}
+
+.section-bg-nen {
+  background-image: url('img/nen.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.hero-overlay {
+  background-image: url('img/nen.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.82;
+  pointer-events: none;
 }
 
 
@@ -19,7 +41,7 @@ body {
 /* Bộ khung viền kép dùng lại nhiều nơi (thẻ thông tin, lời chúc, v.v.) */
 .double-border {
   position: relative;
-  border: 1px solid #b2cee5; /* viền ngoài theo tông xanh pastel */
+  border: 1px solid #045493; /* viền ngoài theo tông xanh pastel */
 }
 .double-border:before {
   content: "";
@@ -28,7 +50,7 @@ body {
   bottom: 8px;
   left: 8px;
   right: 8px;
-  border: 1px solid #b2cee5;
+  border: 1px solid #045493;
   pointer-events: none; /* không chặn thao tác vào nội dung */
 }
 .double-border-white {
@@ -91,7 +113,7 @@ body {
   position: fixed;
   top: -10vh; /* tạo trái tim ngay mép trên */
   font-size: 20px; /* kích thước gốc, JS sẽ random thêm */
-  color: #b2cee5; /* giữ màu nền tông dịu */
+  color: #8cd1ee; /* giữ màu nền tông dịu */
   opacity: 0.55;
   animation: fall linear infinite;
   z-index: 9999; /* luôn nổi trên cùng */
@@ -154,7 +176,7 @@ body {
   height: 100%;
 }
 .overlay-border line {
-  stroke: #b2cee5;
+  stroke: #045493;
   stroke-width: 0.35; /* viền mảnh */
   stroke-linecap: square;
   fill: none;
@@ -162,24 +184,86 @@ body {
   stroke-dashoffset: 100; /* bắt đầu ở trạng thái chưa vẽ */
 }
 .overlay-border .inner-frame {
-  stroke: #b2cee5;
+  stroke: #045493;
   transform: translate(0, 0);
 }
 .font-art { font-family: 'Corinthia', cursive; /* chữ ký mềm mại mới */ }
+#couple .person-photo {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
 #couple .rounded-3xl { aspect-ratio: 1 / 1; }
 #couple .uniform-img { width: 100%; height: 100%; object-fit: cover; }
 .uniform-img { width:100%; height:420px; object-fit:cover; /* đồng bộ tỉ lệ ảnh */ }
+
+.couple-grid { position: relative; }
+.couple-connector {
+  display: none;
+}
+.couple-connector__line {
+  display: block;
+  height: 2px;
+  width: clamp(18px, 2vw, 48px);
+  background: linear-gradient(90deg, rgba(4,84,147,0), rgba(4,84,147,0.6), rgba(4,84,147,0));
+}
+.couple-connector__heart {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  background: #8cd1ee;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(4, 84, 147, 0.18);
+}
+.couple-connector__heart i {
+  font-size: 1.5rem;
+}
+
+.qr-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 480px) {
+  .qr-image {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (min-width: 768px) {
+  .couple-connector {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: clamp(6px, 1.6vw, 14px);
+    z-index: 5;
+    pointer-events: none;
+  }
+  .couple-grid {
+    column-gap: 0;
+  }
+}
 @keyframes fadeInUp { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
 @media (max-width: 767px) {
   .uniform-img { height: 320px; /* giảm chiều cao ảnh trên màn nhỏ */ }
   #couple .uniform-img { height: auto; }
+  #couple .person-photo { max-width: 280px; }
   .person-photo .overlay-border { display: none; /* bỏ viền động để giao diện nhẹ hơn */ }
   .person-photo > .absolute.inset-3 {
     position: static;
     inset: auto;
     opacity: 1 !important;
     transform: none !important;
-    background: #e9f5ff;
+    background: #e3f0ff;
     padding: 1rem; /* thêm đệm để dễ đọc */
     box-shadow: none;
     animation: fadeInUp 0.5s ease both;
@@ -230,7 +314,7 @@ body {
 .lightbox img {
   max-width: min(90vw, 960px);
   max-height: 90vh;
-  border: 6px solid #b2cee5;
+  border: 6px solid #045493;
   background: #f9fbfa;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
@@ -238,7 +322,7 @@ body {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  background: #b2cee5;
+  background: #045493;
   color: #045493;
   border: none;
   width: 42px;
