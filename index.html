@@ -85,10 +85,10 @@
       <div class="mb-4 text-4xl text-text-dark">
         <i class="fa-solid fa-heart"></i>
       </div>
-      <p class="uppercase tracking-[0.35em] text-sm md:text-base text-text-dark/80 mb-4">
+      <p class="save-date-text uppercase tracking-[0.35em] text-sm md:text-base text-text-dark/80 mb-4">
         SAVE THE DATE
       </p>
-      <h1 class="font-heading text-text-dark text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold leading-tight mb-4">
+      <h1 class="font-heading text-text-dark text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold leading-tight mb-4 whitespace-nowrap">
         Trung Hiếu &amp; Thanh Phương
       </h1>
       <p class="text-text-dark text-xl md:text-3xl mb-8">
@@ -311,26 +311,26 @@
     <div class="relative max-w-5xl mx-auto px-4">
       <div class="grid md:grid-cols-2 gap-12 bg-block-light/90 rounded-3xl shadow-2xl overflow-hidden scroll-animate">
         <!-- Cột nội dung bên trái -->
-        <div class="p-10 md:p-14 flex flex-col justify-center border-b md:border-b-0 md:border-r border-border-pink">
+        <div class="p-10 md:p-14 flex flex-col justify-center items-center text-center border-b md:border-b-0 md:border-r border-border-pink">
           <p class="font-heading text-4xl md:text-5xl text-accent-pink mb-5">
             Save The Date
           </p>
           <p class="text-base md:text-lg text-text-dark/80 mb-5">
             Một lời chúc của bạn chắc chắn sẽ làm cho đám cưới của chúng mình có thêm thật nhiều niềm hạnh phúc.
           </p>
-          <p class="font-heading text-4xl text-text-dark mb-3">
+          <p class="font-heading text-4xl text-text-dark mb-3 whitespace-nowrap">
             Trung Hiếu &amp; Thanh Phương
           </p>
           <p class="text-base text-text-dark/70 mb-8 text-center">
             20 tháng 12 2025
           </p>
-          <div class="flex flex-nowrap gap-3">
+          <div class="cta-actions flex flex-nowrap gap-3">
             <a href="#guestbook"
-               class="px-5 py-2.5 border border-border-pink text-accent-pink rounded-full text-[11px] md:text-xs whitespace-nowrap hover:bg-primary-pink hover:text-white transition">
+              class="px-5 py-2.5 border border-border-pink text-accent-pink rounded-full text-[11px] md:text-xs whitespace-nowrap text-center hover:bg-primary-pink hover:text-white transition">
               GỬI LỜI CHÚC
             </a>
             <button onclick="openRSVP()"
-              class="px-5 py-2.5 border border-border-pink text-accent-pink rounded-full text-[11px] md:text-xs whitespace-nowrap hover:bg-primary-pink hover:text-white transition">
+              class="px-5 py-2.5 border border-border-pink text-accent-pink rounded-full text-[11px] md:text-xs whitespace-nowrap text-center hover:bg-primary-pink hover:text-white transition">
               XÁC NHẬN THAM DỰ
             </button>
           </div>
@@ -338,11 +338,11 @@
 
         <!-- Cột bên phải hiển thị đồng hồ -->
         <div class="p-10 md:p-14 flex flex-col items-center justify-center text-center">
-          <p class="font-heading text-4xl text-accent-pink mb-6">
+          <p class="font-heading text-4xl text-accent-pink mb-6 text-center">
             The Big Day!
           </p>
-          <p class="text-base md:text-lg text-text-dark/70 mb-5">20 tháng 12 2025</p>
-          <div class="grid grid-cols-4 gap-4 w-full mb-5">
+          <p class="text-base md:text-lg text-text-dark/70 mb-5 text-center">20 tháng 12 2025</p>
+          <div class="countdown-grid grid grid-cols-4 gap-4 w-full mb-5 justify-items-center">
             <div class="double-border bg-block-light rounded-2xl px-3 py-4 flex flex-col items-center justify-center">
               <span id="days" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
               <span class="text-xs mt-2">Ngày</span>
@@ -360,7 +360,7 @@
               <span class="text-xs mt-2">Giây</span>
             </div>
           </div>
-          <p class="text-sm text-text-dark/70">
+          <p class="text-sm text-text-dark/70 text-center">
             Hẹn gặp bạn vào ngày 20/12/2025 để cùng chứng kiến khoảnh khắc chúng mình về chung một nhà.
           </p>
         </div>
@@ -513,7 +513,7 @@
         </p>
       </div>
 
-      <form id="guestbookForm" class="double-border rounded-3xl bg-milky px-7 md:px-10 py-10 space-y-7 scroll-animate">
+      <form id="guestbookForm" class="double-border rounded-3xl bg-milky px-7 md:px-10 py-10 space-y-7 scroll-animate text-center">
         <div class="grid md:grid-cols-2 gap-6">
           <div>
             <label class="text-xs uppercase tracking-wide text-text-dark/60">Họ và tên</label>
@@ -529,8 +529,8 @@
           <textarea name="message" rows="4" required class="w-full mt-2 bg-transparent border border-border-pink focus:outline-none focus:border-text-dark rounded-2xl px-4 py-3 text-base" placeholder="Viết vài dòng cho tụi mình nhé..."></textarea>
         </div>
         <div class="text-center">
-          <button id="guestbookSubmit" type="submit"
-                  class="inline-flex items-center gap-3 px-8 py-3 rounded-full border border-border-pink text-accent-pink text-sm md:text-base hover:bg-primary-pink hover:text-white transition">
+            <button id="guestbookSubmit" type="submit"
+              class="inline-flex items-center justify-center gap-3 px-8 py-3 rounded-full border border-border-pink text-accent-pink text-sm md:text-base hover:bg-primary-pink hover:text-white transition text-center">
             <i class="fa-regular fa-paper-plane"></i>
             GỬI LỜI CHÚC
           </button>
@@ -553,16 +553,16 @@
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 scroll-animate">
+      <div class="grid md:grid-cols-2 gap-8 justify-items-center scroll-animate">
         <!-- Thẻ QR nhà trai -->
-        <div class="bg-block-light rounded-3xl text-text-dark p-6 md:p-8 double-border max-w-sm mx-auto">
-          <h3 class="font-heading text-4xl md:text-5xl mb-3 text-center">Nhà trai</h3>
-          <p class="text-base md:text-lg text-center mb-5 text-text-dark/70">Trung Hiếu</p>
-          <div class="border border-border-pink rounded-2xl p-5 flex flex-col items-center gap-4 bg-block-light/60">
+        <div class="bg-block-light text-text-dark p-5 md:p-6 border border-border-pink max-w-xs w-full mx-auto flex flex-col gap-4 h-full">
+          <h3 class="font-heading text-3xl md:text-4xl text-center">Nhà trai</h3>
+          <p class="text-sm md:text-base text-center text-text-dark/70">Trung Hiếu</p>
+          <div class="border border-border-pink rounded-2xl p-4 flex flex-col items-center gap-4 bg-block-light/60 h-full">
             <img src="img/7.jpg" class="rounded-xl bg-block-light qr-image" alt="QR Groom">
             <div class="text-sm space-y-1 text-center">
               <p>Ngân hàng: <span class="font-semibold">A</span></p>
-              <p>Chủ tài khoản: <span class="font-semibold">NGUYEN TRUNG HIEU</span></p>
+              <p class="account-line">CTK: <span class="font-semibold">NGUYEN TRUNG HIEU</span></p>
               <p>Số tài khoản: <span class="font-semibold tracking-widest">0123 456 789</span></p>
               <p>Nội dung: <span class="italic">[Tên bạn] mừng cưới</span></p>
             </div>
@@ -570,14 +570,14 @@
         </div>
 
         <!-- Thẻ QR nhà gái -->
-        <div class="bg-block-light rounded-3xl text-text-dark p-6 md:p-8 double-border max-w-sm mx-auto">
-          <h3 class="font-heading text-4xl md:text-5xl mb-3 text-center">Nhà gái</h3>
-          <p class="text-base md:text-lg text-center mb-5 text-text-dark/70">Thanh Phương</p>
-          <div class="border border-border-pink rounded-2xl p-5 flex flex-col items-center gap-4 bg-block-light/60">
+        <div class="bg-block-light text-text-dark p-5 md:p-6 border border-border-pink max-w-xs w-full mx-auto flex flex-col gap-4 h-full">
+          <h3 class="font-heading text-3xl md:text-4xl text-center">Nhà gái</h3>
+          <p class="text-sm md:text-base text-center text-text-dark/70">Thanh Phương</p>
+          <div class="border border-border-pink rounded-2xl p-4 flex flex-col items-center gap-4 bg-block-light/60 h-full">
             <img src="img/8.jpg" class="rounded-xl bg-block-light qr-image" alt="QR Bride">
             <div class="text-sm space-y-1 text-center">
               <p>Ngân hàng: <span class="font-semibold">B</span></p>
-              <p>Chủ tài khoản: <span class="font-semibold">NGUYEN THANH PHUONG</span></p>
+              <p class="account-line">CTK: <span class="font-semibold">NGUYEN THANH PHUONG</span></p>
               <p>Số tài khoản: <span class="font-semibold tracking-widest">123456789</span></p>
               <p>Nội dung: <span class="italic">[Tên bạn] mừng cưới</span></p>
             </div>
@@ -637,7 +637,7 @@
       <svg class="leaf-svg rotate-180 opacity-80" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M5 45C25 5 55 5 95 5" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
-      <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Trung Hiếu &amp; Thanh Phương</h2>
+      <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap">Trung Hiếu &amp; Thanh Phương</h2>
       <svg class="leaf-svg opacity-80" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M5 45C25 5 55 5 95 5" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
@@ -649,7 +649,7 @@
 </footer>
 
 <!-- Cụm nút nổi thao tác nhanh -->
-<div class="fixed bottom-5 right-5 z-50 flex flex-col gap-3">
+<div class="floating-buttons fixed bottom-5 right-5 z-50 flex flex-col gap-3">
   <!-- Menu / scroll to top -->
   <button id="btn-top"
       class="w-12 h-12 rounded-full bg-block-light border border-border-pink shadow-lg text-accent-pink flex items-center justify-center hover:scale-105 transition"

@@ -31,6 +31,17 @@ body {
   pointer-events: none;
 }
 
+.save-date-text {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.account-line {
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
 
 /* Khối "Chuyện chúng mình" với nền xiên để tạo điểm nhấn */
 .diagonal-section {
@@ -267,6 +278,40 @@ body {
     padding: 1rem; /* thêm đệm để dễ đọc */
     box-shadow: none;
     animation: fadeInUp 0.5s ease both;
+  }
+  .cta-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    transform: translateX(-0.4cm);
+  }
+  .cta-actions a,
+  .cta-actions button {
+    flex: 1 1 auto;
+    max-width: 200px;
+  }
+  .countdown-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    justify-items: center;
+    gap: 0.75rem;
+    padding: 0 1rem;
+    transform: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .countdown-grid .double-border {
+    width: 100%;
+    max-width: 130px;
+    padding: 0.75rem 0.5rem;
+  }
+  .floating-buttons {
+    gap: 0.5rem;
+    right: 0.75rem !important;
+    bottom: 0.75rem !important;
+  }
+  .floating-buttons button {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
 /* Loại bỏ bo góc mặc định của Tailwind để giữ phong cách góc cạnh */
