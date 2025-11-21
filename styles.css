@@ -253,17 +253,28 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    gap: clamp(6px, 1.6vw, 14px);
+    display: block;
     z-index: 5;
     pointer-events: none;
   }
+  .couple-connector__line {
+    display: none;
+  }
   .couple-grid {
-    column-gap: 0;
+    column-gap: 2rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 @keyframes fadeInUp { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
+.countdown-grid .time-box {
+  border: 2px solid #045493;
+  padding: 1.25rem 1rem;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1;
+}
 @media (max-width: 767px) {
   .uniform-img { height: 320px; /* giảm chiều cao ảnh trên màn nhỏ */ }
   #couple .uniform-img { height: auto; }
@@ -281,28 +292,32 @@ body {
   }
   .cta-actions {
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     width: 100%;
-    transform: translateX(-0.4cm);
-  }
-  .cta-actions a,
-  .cta-actions button {
-    flex: 1 1 auto;
-    max-width: 200px;
-  }
-  .countdown-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    justify-items: center;
-    gap: 0.75rem;
-    padding: 0 1rem;
     transform: none;
     margin-left: auto;
     margin-right: auto;
   }
-  .countdown-grid .double-border {
-    width: 100%;
-    max-width: 130px;
-    padding: 0.75rem 0.5rem;
+  .cta-actions a,
+  .cta-actions button {
+    flex: 0 1 auto;
+    white-space: nowrap;
+  }
+  .countdown-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    justify-items: center;
+    gap: 0.5rem;
+    padding: 0;
+    transform: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+  .countdown-grid .time-box {
+    padding: 0.8rem 0.5rem;
+    min-width: 70px;
+    max-width: 90px;
+    border: 1px solid #045493;
   }
   .floating-buttons {
     gap: 0.5rem;

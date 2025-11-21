@@ -309,9 +309,9 @@
     </div>
 
     <div class="relative max-w-5xl mx-auto px-4">
-      <div class="grid md:grid-cols-2 gap-12 bg-block-light/90 rounded-3xl shadow-2xl overflow-hidden scroll-animate">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-block-light/90 rounded-3xl shadow-2xl overflow-hidden scroll-animate justify-items-center md:justify-items-stretch">
         <!-- Cột nội dung bên trái -->
-        <div class="p-10 md:p-14 flex flex-col justify-center items-center text-center border-b md:border-b-0 md:border-r border-border-pink">
+        <div class="w-full p-10 md:p-14 flex flex-col justify-center items-center text-center border-b md:border-b-0 md:border-r border-border-pink">
           <p class="font-heading text-4xl md:text-5xl text-accent-pink mb-5">
             Save The Date
           </p>
@@ -337,25 +337,25 @@
         </div>
 
         <!-- Cột bên phải hiển thị đồng hồ -->
-        <div class="p-10 md:p-14 flex flex-col items-center justify-center text-center">
+        <div class="w-full p-10 md:p-14 flex flex-col items-center justify-center text-center">
           <p class="font-heading text-4xl text-accent-pink mb-6 text-center">
             The Big Day!
           </p>
           <p class="text-base md:text-lg text-text-dark/70 mb-5 text-center">20 tháng 12 2025</p>
           <div class="countdown-grid grid grid-cols-4 gap-4 w-full mb-5 justify-items-center">
-            <div class="double-border bg-block-light rounded-2xl px-3 py-4 flex flex-col items-center justify-center">
+            <div class="time-box bg-block-light rounded-2xl flex flex-col items-center justify-center">
               <span id="days" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
               <span class="text-xs mt-2">Ngày</span>
             </div>
-            <div class="double-border bg-block-light rounded-2xl px-3 py-4 flex flex-col items-center justify-center">
+            <div class="time-box bg-block-light rounded-2xl flex flex-col items-center justify-center">
               <span id="hours" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
               <span class="text-xs mt-2">Giờ</span>
             </div>
-            <div class="double-border bg-block-light rounded-2xl px-3 py-4 flex flex-col items-center justify-center">
+            <div class="time-box bg-block-light rounded-2xl flex flex-col items-center justify-center">
               <span id="minutes" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
               <span class="text-xs mt-2">Phút</span>
             </div>
-            <div class="double-border bg-block-light rounded-2xl px-3 py-4 flex flex-col items-center justify-center">
+            <div class="time-box bg-block-light rounded-2xl flex flex-col items-center justify-center">
               <span id="seconds" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
               <span class="text-xs mt-2">Giây</span>
             </div>
