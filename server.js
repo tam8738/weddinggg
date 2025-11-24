@@ -69,8 +69,8 @@ function formatTimestampGMT7(value) {
 // Các hàm thao tác với Google Sheets
 // -------------------------
 const SHEET_HEADERS = {
-  [RSVP_SHEET]: ['Thời gian', 'Tên', 'Số điện thoại', 'số người đi cùng', 'Ghi chú'],
-  [GUESTBOOK_SHEET]: ['Thời gian', 'Tên', 'Liên hệ', 'Lời nhắn']
+  [RSVP_SHEET]: ['Thời gian', 'Tên', 'Bạn của', 'Số điện thoại', 'số người đi cùng', 'Ghi chú'],
+  [GUESTBOOK_SHEET]: ['Thời gian', 'Tên', 'Bạn của', 'Liên hệ', 'Lời nhắn']
 };
 
 let sheetsClientPromise = null;
@@ -165,10 +165,10 @@ function createGoogleStorage() {
       await Promise.all(Object.keys(SHEET_HEADERS).map((title) => ensureSheetExists(title)));
     },
     saveRsvp: async (entry) => {
-      await appendRow(RSVP_SHEET, [entry.timestamp, entry.name, entry.phone, entry.guests, entry.note]);
+      await appendRow(RSVP_SHEET, [entry.timestamp, entry.name, entry.side, entry.phone, entry.guests, entry.note]);
     },
     saveGuestbook: async (entry) => {
-      await appendRow(GUESTBOOK_SHEET, [entry.timestamp, entry.name, entry.contact, entry.message]);
+      await appendRow(GUESTBOOK_SHEET, [entry.timestamp, entry.name, entry.side, entry.contact, entry.message]);
     },
     getGuestbook: async (limit) => fetchGuestbookRows(limit)
   };
@@ -229,13 +229,14 @@ initializeStorage();
 // Định nghĩa API phục vụ frontend
 // -------------------------
 app.post('/api/rsvp', async (req, res) => {
-  const { name, phone = '', guests = 1, note = '', timestamp } = req.body || {};
+  const { name, side = '', phone = '', guests = 1, note = '', timestamp } = req.body || {};
   if (!name || String(name).trim().length === 0) {
     return res.status(400).json({ ok: false, error: 'Name is required' });
   }
   const formattedTimestamp = formatTimestampGMT7(timestamp);
   const entry = {
     name: String(name).trim(),
+    side: String(side).trim(),
     phone: String(phone).trim(),
     guests: Number(guests) || 1,
     note: String(note).trim(),
@@ -252,13 +253,14 @@ app.post('/api/rsvp', async (req, res) => {
 });
 
 app.post('/api/guestbook', async (req, res) => {
-  const { name, contact = '', message, timestamp } = req.body || {};
+  const { name, side = '', contact = '', message, timestamp } = req.body || {};
   if (!name || !message || String(name).trim().length === 0 || String(message).trim().length === 0) {
     return res.status(400).json({ ok: false, error: 'Name and message are required' });
   }
   const formattedTimestamp = formatTimestampGMT7(timestamp);
   const entry = {
     name: String(name).trim(),
+    side: String(side).trim(),
     contact: String(contact).trim(),
     message: String(message).trim(),
     type: 'GUESTBOOK',
