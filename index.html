@@ -15,12 +15,12 @@
       theme: {
         extend: {
           colors: {
-            'primary-pink': '#adcef5',
-            'accent-pink': '#045493',
-            'text-dark': '#000000',
-            'border-pink': '#045493',
-            'milky': '#f9fbfa',
-            'block-light': '#cde7ff'
+            'primary-pink': '#fceee0',
+            'accent-pink': '#920000',
+            'text-dark': '#920000',
+            'border-pink': '#920000',
+            'milky': '#faf2df',
+            'block-light': '#fff5e8'
           },
           fontFamily: {
             heading: ['Corinthia', 'cursive'],
@@ -51,12 +51,12 @@
 </audio>
 
 <!-- Thanh mini bar cố định phía trên -->
-<header class="fixed top-0 left-0 right-0 z-40 bg-primary-pink border-b border-border-pink">
+<header class="fixed top-0 left-0 right-0 z-40 bg-accent-pink border-b border-accent-pink">
   <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between text-base">
-    <div class="font-heading text-accent-pink text-lg">
-      TH <i class="fa-solid fa-heart mx-1 text-accent-pink"></i> TP
+    <div class="font-heading text-white text-lg">
+      TH <i class="fa-solid fa-heart mx-1 text-white"></i> TP
     </div>
-    <div class="hidden md:block text-sm text-text-dark/70">
+    <div class="hidden md:block text-sm text-white/90">
       20 tháng 12 2025 · Hà Nội
     </div>
   </div>
@@ -95,12 +95,12 @@
         20 tháng 12 2025
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="#guestbook"
-           class="inline-block px-10 py-3 border border-border-pink text-text-dark rounded-full tracking-wide text-base md:text-lg hover:bg-primary-pink hover:text-white transition">
+          <a href="#guestbook"
+            class="inline-block px-10 py-3 border border-border-pink text-text-dark rounded-full tracking-wide text-base md:text-lg hover:bg-primary-pink hover:text-[#9f4646] transition">
           GỬI LỜI CHÚC
         </a>
-        <button onclick="openRSVP()"
-           class="inline-block px-10 py-3 border border-border-pink text-text-dark rounded-full tracking-wide text-base md:text-lg hover:bg-primary-pink hover:text-white transition">
+          <button onclick="openRSVP()"
+            class="inline-block px-10 py-3 border border-border-pink text-text-dark rounded-full tracking-wide text-base md:text-lg hover:bg-primary-pink hover:text-[#9f4646] transition">
           XÁC NHẬN THAM DỰ
         </button>
       </div>
@@ -108,7 +108,7 @@
   </section>
 
   <!-- KHU 2: Thông tin cô dâu chú rể -->
-  <section id="couple" class="py-16 md:py-20 bg-milky">
+  <section id="couple" class="py-16 md:py-20 pb-0 bg-milky">
     <div class="max-w-6xl mx-auto px-4 scroll-animate">
       <div class="couple-grid grid md:grid-cols-2 gap-10 md:gap-y-0 md:gap-x-0 items-start relative">
         <!-- Trái tim nối hai thẻ nhân vật -->
@@ -200,17 +200,17 @@
       </div>
 
       <!-- Đoạn cảm ơn ngắn cuối phần giới thiệu -->
-      <div class="mt-16 text-center scroll-animate">
-        <h2 class="font-heading text-4xl md:text-5xl text-accent-pink mb-6">
+      <div class="mt-8 text-center bg-milky rounded-3xl py-12 px-6 md:w-full md:max-w-[1260px] md:mx-auto md:pb-0 md:pr-0 md:pt-0 md:pl-0 md:border-t-0" style="aspect-ratio: 1260/330;">
+        <h2 class="font-heading text-4xl md:text-5xl text-text-dark mb-6 scroll-animate is-visible">
           Và.. Ngày ấy đã tới
         </h2>
-        <p class="max-w-3xl mx-auto mb-5 text-base md:text-lg text-text-dark/80">
+        <p class="max-w-3xl mx-auto mb-5 text-base md:text-lg text-text-dark/80 scroll-animate is-visible">
           Thật vui vì được gặp và đón tiếp các bạn trong một dịp đặc biệt - Ngày cưới của chúng mình.
           Chúng mình muốn gửi đến bạn lời cảm ơn sâu sắc nhất vì đã luôn ở bên và chia sẻ cùng tụi mình.
         </p>
-        <p class="font-art text-4xl md:text-6xl mb-12 text-accent-pink">Trung Hiếu &amp; Thanh Phương</p>
+        <p class="font-art text-4xl md:text-6xl mb-12 text-text-dark scroll-animate is-visible">Trung Hiếu &amp; Thanh Phương</p>
 
-        <div class="grid md:grid-cols-2 gap-8 text-base text-text-dark/80 max-w-3xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8 text-base text-text-dark/85 max-w-3xl mx-auto scroll-animate is-visible">
           <div>
             <p class="uppercase text-xs tracking-wide text-text-dark/60 mb-1">Nhà trai</p>
             <p>Con ông: <span class="font-semibold">Y</span></p>
@@ -227,14 +227,14 @@
   </section>
 
   <!-- KHU 3: Tiêu đề câu chuyện tình yêu -->
-  <section class="my-10">
+  <section>
             <div class="diagonal-section bg-center bg-cover bg-fixed"
               style="background-image:url('img/ring.jpg');">
-      <div class="bg-block-light/80 py-16 md:py-24">
-        <div class="max-w-6xl mx-auto px-4 text-center text-text-dark scroll-animate">
+      <div class="bg-accent-pink/95 py-16 md:py-24">
+        <div class="max-w-6xl mx-auto px-4 text-center text-white scroll-animate">
           <h2 class="font-heading text-4xl md:text-5xl mb-5">Chuyện chúng mình</h2>
           <div class="flex justify-center">
-            <span class="w-16 border-t border-text-dark/40"></span>
+            <span class="w-16 border-t border-white/60"></span>
           </div>
         </div>
       </div>
@@ -332,11 +332,11 @@
           </p>
           <div class="cta-actions flex flex-nowrap gap-3">
             <a href="#guestbook"
-              class="px-5 py-2.5 border border-border-pink text-accent-pink rounded-full text-[11px] md:text-xs whitespace-nowrap text-center hover:bg-primary-pink hover:text-white transition">
+              class="px-5 py-2.5 border border-border-pink text-accent-pink rounded-full text-[11px] md:text-xs whitespace-nowrap text-center hover:bg-primary-pink hover:text-[#9f4646] transition">
               GỬI LỜI CHÚC
             </a>
             <button onclick="openRSVP()"
-              class="px-5 py-2.5 border border-border-pink text-accent-pink rounded-full text-[11px] md:text-xs whitespace-nowrap text-center hover:bg-primary-pink hover:text-white transition">
+              class="px-5 py-2.5 border border-border-pink text-accent-pink rounded-full text-[11px] md:text-xs whitespace-nowrap text-center hover:bg-primary-pink hover:text-[#9f4646] transition">
               XÁC NHẬN THAM DỰ
             </button>
           </div>
@@ -375,16 +375,16 @@
   </section>
 
   <!-- KHU 6: Album ảnh cưới -->
-  <section id="gallery" class="py-16 md:py-20 section-bg-nen">
+  <section id="gallery" class="py-16 md:py-20 bg-accent-pink">
     <div class="max-w-6xl mx-auto px-4">
       <div class="text-center mb-12 scroll-animate">
-        <p class="font-heading text-4xl md:text-5xl text-text-dark mb-4">
+        <p class="font-heading text-4xl md:text-5xl text-white mb-4">
           Album Hình Cưới
         </p>
-        <div class="flex items-center justify-center gap-3 text-accent-pink">
-          <span class="w-10 border-t border-border-pink"></span>
+        <div class="flex items-center justify-center gap-3 text-white">
+          <span class="w-10 border-t border-white"></span>
           <i class="fa-regular fa-gem"></i>
-          <span class="w-10 border-t border-border-pink"></span>
+          <span class="w-10 border-t border-white"></span>
         </div>
       </div>
 
@@ -498,28 +498,28 @@
   </section>
 
   <!-- KHU 8: Sổ lưu bút -->
-  <section id="guestbook" class="py-16 md:py-20 section-bg-nen relative overflow-hidden">
+  <section id="guestbook" class="py-16 md:py-20 bg-accent-pink relative overflow-hidden">
     <!-- Trang trí lá ở hai góc -->
     <div class="absolute -left-10 top-10 opacity-20">
       <svg class="leaf-svg" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 45C25 5 55 5 95 5" stroke="#045493" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M5 45C25 5 55 5 95 5" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
     <div class="absolute -right-10 bottom-10 opacity-20 rotate-180">
       <svg class="leaf-svg" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 45C25 5 55 5 95 5" stroke="#045493" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M5 45C25 5 55 5 95 5" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
 
     <div class="max-w-3xl mx-auto px-4 relative">
       <div class="text-center mb-10 scroll-animate">
-        <h2 class="font-heading text-4xl md:text-5xl mb-3 text-text-dark">Sổ lưu bút</h2>
-        <p class="text-base text-text-dark/70">
+        <h2 class="font-heading text-4xl md:text-5xl mb-3 text-white">Sổ lưu bút</h2>
+        <p class="text-base text-white/90">
           Hãy để lại lời chúc, kỷ niệm hoặc bất cứ điều gì bạn muốn gửi đến tụi mình nhé!
         </p>
       </div>
 
-      <form id="guestbookForm" class="double-border rounded-3xl bg-milky px-7 md:px-10 py-10 space-y-7 scroll-animate text-center">
+      <form id="guestbookForm" class="double-border rounded-3xl bg-block-light px-7 md:px-10 py-10 space-y-7 scroll-animate text-center">
         <div class="grid md:grid-cols-2 gap-6">
           <div>
             <label class="text-xs uppercase tracking-wide text-text-dark/60">Họ và tên</label>
@@ -536,7 +536,7 @@
         </div>
         <div class="text-center">
             <button id="guestbookSubmit" type="submit"
-              class="inline-flex items-center justify-center gap-3 px-8 py-3 rounded-full border border-border-pink text-accent-pink text-sm md:text-base hover:bg-primary-pink hover:text-white transition text-center">
+              class="inline-flex items-center justify-center gap-3 px-8 py-3 rounded-full border border-border-pink text-accent-pink text-sm md:text-base hover:bg-primary-pink hover:text-[#9f4646] transition text-center">
             <i class="fa-regular fa-paper-plane"></i>
             GỬI LỜI CHÚC
           </button>
@@ -626,7 +626,7 @@
         <textarea name="note" rows="3" class="w-full mt-2 bg-transparent border border-border-pink focus:outline-none focus:border-text-dark rounded-2xl px-4 py-3 text-base" placeholder="Ví dụ: Ăn chay, dị ứng thực phẩm..."></textarea>
       </div>
       <div class="text-center pt-2">
-        <button type="submit" class="px-9 py-3 bg-block-light border border-border-pink text-accent-pink rounded-full text-base hover:bg-primary-pink hover:text-white transition">
+        <button type="submit" class="px-9 py-3 bg-block-light border border-border-pink text-accent-pink rounded-full text-base hover:bg-primary-pink hover:text-[#9f4646] transition">
           <i class="fa-solid fa-check mr-2"></i>Xác nhận
         </button>
       </div>
@@ -636,19 +636,19 @@
 </div>
 
 <!-- KHU 10: Chân trang cảm ơn -->
-<footer class="bg-primary-pink border-t border-border-pink text-text-dark py-10 md:py-12">
+<footer class="bg-accent-pink border-t border-accent-pink text-white py-10 md:py-12">
   <div class="max-w-4xl mx-auto px-4 text-center scroll-animate">
     <!-- Leaf around name -->
     <div class="flex items-center justify-center gap-3 mb-4">
       <svg class="leaf-svg rotate-180 opacity-80" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 45C25 5 55 5 95 5" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M5 45C25 5 55 5 95 5" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
       <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap">Trung Hiếu &amp; Thanh Phương</h2>
       <svg class="leaf-svg opacity-80" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 45C25 5 55 5 95 5" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M5 45C25 5 55 5 95 5" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
-    <p class="text-sm md:text-base text-text-dark/80">
+    <p class="text-sm md:text-base text-white/90">
       Cảm ơn bạn vì đã là một phần trong hành trình yêu thương của chúng mình.
     </p>
   </div>

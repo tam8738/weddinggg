@@ -3,31 +3,18 @@ html {
 }
 body {
   font-family: 'Pacifico', cursive; /* kiểu viết tay theo yêu cầu */
-  color: #000000; /* chữ đen */
+  color: #920000; /* chữ đỏ */
   scroll-behavior: smooth; /* cuộn trang mượt khi nhảy anchor */
-  background-color: #f9fbfa; /* nền tổng thể */
-  background-image: url('img/nen.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-attachment: fixed;
+  background-color: #faf2df; /* nền be */
   line-height: 1.6;
 }
 
 .section-bg-nen {
-  background-image: url('img/nen.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background: linear-gradient(135deg, #faf2df 0%, #f5e6c8 100%);
 }
 
 .hero-overlay {
-  background-image: url('img/nen.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.82;
+  background: linear-gradient(135deg, rgba(250, 242, 223, 0.85) 0%, rgba(146, 0, 0, 0.08) 100%);
   pointer-events: none;
 }
 
@@ -52,7 +39,7 @@ body {
 /* Bộ khung viền kép dùng lại nhiều nơi (thẻ thông tin, lời chúc, v.v.) */
 .double-border {
   position: relative;
-  border: 1px solid #045493; /* viền ngoài theo tông xanh pastel */
+  border: 1px solid #920000; /* viền ngoài màu đỏ */
 }
 .double-border:before {
   content: "";
@@ -61,7 +48,7 @@ body {
   bottom: 8px;
   left: 8px;
   right: 8px;
-  border: 1px solid #045493;
+  border: 1px solid #920000;
   pointer-events: none; /* không chặn thao tác vào nội dung */
 }
 .double-border-white {
@@ -124,8 +111,8 @@ body {
   position: fixed;
   top: -10vh; /* tạo trái tim ngay mép trên */
   font-size: 20px; /* kích thước gốc, JS sẽ random thêm */
-  color: #8cd1ee; /* giữ màu nền tông dịu */
-  opacity: 0.55;
+  color: #920000; /* màu đỏ */
+  opacity: 0.6;
   animation: fall linear infinite;
   z-index: 9999; /* luôn nổi trên cùng */
   pointer-events: none; /* không chặn thao tác người dùng */
@@ -187,7 +174,7 @@ body {
   height: 100%;
 }
 .overlay-border line {
-  stroke: #045493;
+  stroke: #920000;
   stroke-width: 0.35; /* viền mảnh */
   stroke-linecap: square;
   fill: none;
@@ -195,7 +182,7 @@ body {
   stroke-dashoffset: 100; /* bắt đầu ở trạng thái chưa vẽ */
 }
 .overlay-border .inner-frame {
-  stroke: #045493;
+  stroke: #920000;
   transform: translate(0, 0);
 }
 .font-art { font-family: 'Corinthia', cursive; /* chữ ký mềm mại mới */ }
@@ -216,18 +203,19 @@ body {
   display: block;
   height: 2px;
   width: clamp(18px, 2vw, 48px);
-  background: linear-gradient(90deg, rgba(4,84,147,0), rgba(4,84,147,0.6), rgba(4,84,147,0));
+  background: linear-gradient(90deg, rgba(146,0,0,0), rgba(146,0,0,0.6), rgba(146,0,0,0));
 }
 .couple-connector__heart {
   width: 56px;
   height: 56px;
   border-radius: 9999px;
-  background: #8cd1ee;
-  color: #fff;
+  background: linear-gradient(135deg, #fceee0 0%, #fff5e8 100%);
+  color: #920000;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 25px rgba(4, 84, 147, 0.18);
+  box-shadow: 0 10px 25px rgba(146, 0, 0, 0.25);
+  border: 2px solid #920000;
 }
 .couple-connector__heart i {
   font-size: 1.5rem;
@@ -269,7 +257,7 @@ body {
 }
 @keyframes fadeInUp { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
 .countdown-grid .time-box {
-  border: 2px solid #045493;
+  border: 2px solid #920000;
   padding: 1.25rem 1rem;
   width: 100%;
   min-width: 0;
@@ -285,10 +273,14 @@ body {
     inset: auto;
     opacity: 1 !important;
     transform: none !important;
-    background: #e3f0ff;
+    background: #920000;
+    color: #fff5e8;
     padding: 1rem; /* thêm đệm để dễ đọc */
     box-shadow: none;
     animation: fadeInUp 0.5s ease both;
+  }
+  .person-photo > .absolute.inset-3 * {
+    color: #fff5e8 !important;
   }
   .cta-actions {
     justify-content: center;
@@ -317,7 +309,7 @@ body {
     padding: 0.8rem 0.5rem;
     min-width: 70px;
     max-width: 90px;
-    border: 1px solid #045493;
+    border: 1px solid #920000;
   }
   .floating-buttons {
     gap: 0.5rem;
@@ -374,7 +366,7 @@ body {
 .lightbox img {
   max-width: min(90vw, 960px);
   max-height: 90vh;
-  border: 6px solid #045493;
+  border: 6px solid #920000;
   background: #f9fbfa;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
@@ -382,8 +374,8 @@ body {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  background: #045493;
-  color: #045493;
+  background: #920000;
+  color: #ffffff;
   border: none;
   width: 42px;
   height: 42px;
