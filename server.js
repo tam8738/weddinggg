@@ -65,6 +65,14 @@ function formatTimestampGMT7(value) {
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} GMT+7`;
 }
 
+function formatSideToVietnamese(side) {
+  const sideMap = {
+    'groom': 'Chú rể (Trung Hiếu)',
+    'bride': 'Cô dâu (Thanh Phương)'
+  };
+  return sideMap[side] || side;
+}
+
 // -------------------------
 // Các hàm thao tác với Google Sheets
 // -------------------------
@@ -165,10 +173,10 @@ function createGoogleStorage() {
       await Promise.all(Object.keys(SHEET_HEADERS).map((title) => ensureSheetExists(title)));
     },
     saveRsvp: async (entry) => {
-      await appendRow(RSVP_SHEET, [entry.timestamp, entry.name, entry.side, entry.phone, entry.guests, entry.note]);
+      await appendRow(RSVP_SHEET, [entry.timestamp, entry.name, formatSideToVietnamese(entry.side), entry.phone, entry.guests, entry.note]);
     },
     saveGuestbook: async (entry) => {
-      await appendRow(GUESTBOOK_SHEET, [entry.timestamp, entry.name, entry.side, entry.contact, entry.message]);
+      await appendRow(GUESTBOOK_SHEET, [entry.timestamp, entry.name, formatSideToVietnamese(entry.side), entry.contact, entry.message]);
     },
     getGuestbook: async (limit) => fetchGuestbookRows(limit)
   };
