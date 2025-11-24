@@ -913,8 +913,16 @@
     rsvpForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(rsvpForm);
+      const sideVal = (formData.get('side') || '').trim();
+      
+      if (!sideVal) {
+        alert('Vui lòng chọn bạn của chú rể hoặc cô dâu');
+        return;
+      }
+      
       const payload = {
         name: formData.get('name'),
+        side: sideVal,
         phone: formData.get('phone') || '',
         guests: formData.get('guests') || 1,
         note: formData.get('note') || '',
@@ -976,9 +984,12 @@
       const fd = new FormData(guestbookForm);
       const nameVal = (fd.get('name') || '').trim();
       const msgVal = (fd.get('message') || '').trim();
-      if (!nameVal || !msgVal) {
+      const sideVal = (fd.get('side') || '').trim();
+      
+      if (!nameVal || !msgVal || !sideVal) {
         const errBox = document.getElementById('guestbookError');
         if (errBox) {
+          errBox.textContent = 'Vui lòng nhập tên, lời chúc và chọn bạn của chú rể/ cô dâu.';
           errBox.classList.remove('hidden');
           setTimeout(() => errBox.classList.add('hidden'), 2500);
         }
@@ -986,6 +997,7 @@
       }
       const entry = {
         name: nameVal,
+        side: sideVal,
         contact: (fd.get('contact') || '').trim(),
         message: msgVal,
         type: 'GUESTBOOK',
