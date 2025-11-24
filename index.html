@@ -242,7 +242,7 @@
   </section>
 
   <!-- KHU 4: Timeline chuyện tình -->
-  <section id="timeline" class="py-16 md:py-20 bg-milky tulip-bg">
+  <section id="timeline" class="py-16 md:py-20 pb-0 md:pb-20 bg-milky tulip-bg">
     <div class="max-w-4xl mx-auto px-4">
       <div class="relative">
         <div class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 border-l-2 border-border-pink hidden md:block"></div>
@@ -308,16 +308,20 @@
   </section>
 
   <!-- KHU 5: Đồng hồ đếm ngược -->
-  <section id="countdown" class="py-16 md:py-20 relative">
+  <section id="countdown" class="py-16 md:py-20 relative" style="
+    padding-top: 20px;
+">
     <div class="absolute inset-0">
       <img src="img/12.jpg" class="w-full h-full object-cover" alt="">
       <div class="absolute inset-0 bg-block-light/85 backdrop-blur-sm"></div>
     </div>
 
     <div class="relative max-w-5xl mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-block-light/90 rounded-3xl shadow-2xl overflow-hidden scroll-animate justify-items-center md:justify-items-stretch">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-block-light/90 rounded-3xl shadow-2xl overflow-hidden scroll-animate justify-items-center md:justify-items-stretch is-visible">
         <!-- Cột nội dung bên trái -->
-        <div class="w-full p-10 md:p-14 flex flex-col justify-center items-center text-center border-b md:border-b-0 md:border-r border-border-pink">
+        <div class="w-full p-10 md:p-14 flex flex-col justify-center items-center text-center border-b md:border-b-0 md:border-r border-border-pink" style="
+    padding-bottom: 20px;
+">
           <p class="font-heading text-4xl md:text-5xl text-accent-pink mb-5">
             Save The Date
           </p>
@@ -343,26 +347,29 @@
         </div>
 
         <!-- Cột bên phải hiển thị đồng hồ -->
-        <div class="w-full p-10 md:p-14 flex flex-col items-center justify-center text-center">
+        <div class="w-full p-10 md:p-14 flex flex-col items-center justify-center text-center" style="
+    padding-top: 0px;
+    padding-bottom: 20px;
+">
           <p class="font-heading text-4xl text-accent-pink mb-6 text-center">
             The Big Day!
           </p>
           <p class="text-base md:text-lg text-text-dark/70 mb-5 text-center">20 tháng 12 2025</p>
           <div class="countdown-grid grid grid-cols-4 gap-4 w-full mb-5 justify-items-center">
             <div class="time-box bg-block-light rounded-2xl flex flex-col items-center justify-center">
-              <span id="days" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
+              <span id="days" class="font-heading text-3xl md:text-5xl text-accent-pink">24</span>
               <span class="text-xs mt-2">Ngày</span>
             </div>
             <div class="time-box bg-block-light rounded-2xl flex flex-col items-center justify-center">
-              <span id="hours" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
+              <span id="hours" class="font-heading text-3xl md:text-5xl text-accent-pink">21</span>
               <span class="text-xs mt-2">Giờ</span>
             </div>
             <div class="time-box bg-block-light rounded-2xl flex flex-col items-center justify-center">
-              <span id="minutes" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
+              <span id="minutes" class="font-heading text-3xl md:text-5xl text-accent-pink">44</span>
               <span class="text-xs mt-2">Phút</span>
             </div>
             <div class="time-box bg-block-light rounded-2xl flex flex-col items-center justify-center">
-              <span id="seconds" class="font-heading text-3xl md:text-5xl text-accent-pink">0</span>
+              <span id="seconds" class="font-heading text-3xl md:text-5xl text-accent-pink">10</span>
               <span class="text-xs mt-2">Giây</span>
             </div>
           </div>
@@ -498,7 +505,7 @@
   </section>
 
   <!-- KHU 8: Sổ lưu bút -->
-  <section id="guestbook" class="py-16 md:py-20 bg-accent-pink relative overflow-hidden">
+  <section id="guestbook" class="py-16 md:py-20 bg-accent-pink relative overflow-hidden pt-[25px] md:pt-16">
     <!-- Trang trí lá ở hai góc -->
     <div class="absolute -left-10 top-10 opacity-20">
       <svg class="leaf-svg" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -559,7 +566,7 @@
   </section>
 
   <!-- KHU 9: Hộp mừng cưới bằng QR -->
-  <section id="qr" class="py-16 md:py-20 section-bg-nen">
+  <section id="qr" class="py-16 md:py-20 section-bg-nen pt-[25px] md:pt-16">
     <div class="max-w-5xl mx-auto px-4">
       <div class="text-center mb-12 scroll-animate">
         <h2 class="font-heading text-4xl md:text-5xl mb-3 text-text-dark">Hộp mừng cưới</h2>
