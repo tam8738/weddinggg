@@ -530,6 +530,16 @@
             <input name="contact" type="text" class="w-full mt-2 bg-transparent border-b border-border-pink focus:outline-none focus:border-text-dark py-2 text-base" placeholder="(Không bắt buộc)">
           </div>
         </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label class="text-xs uppercase tracking-wide text-text-dark/60">Bạn của</label>
+            <select name="side" class="w-full mt-2 bg-transparent border-b border-border-pink focus:outline-none focus:border-text-dark py-2 text-base">
+              <option value="">-- Chọn --</option>
+              <option value="groom">Chú rể (Trung Hiếu)</option>
+              <option value="bride">Cô dâu (Thanh Phương)</option>
+            </select>
+          </div>
+        </div>
         <div>
           <label class="text-xs uppercase tracking-wide text-text-dark/60">Lời chúc</label>
           <textarea name="message" rows="4" required class="w-full mt-2 bg-transparent border border-border-pink focus:outline-none focus:border-text-dark rounded-2xl px-4 py-3 text-base" placeholder="Viết vài dòng cho tụi mình nhé..."></textarea>
@@ -612,6 +622,14 @@
       <div>
         <label class="text-xs uppercase tracking-wide text-text-dark/60">Họ và tên *</label>
         <input name="name" type="text" required class="w-full mt-2 bg-transparent border-b border-border-pink focus:outline-none focus:border-text-dark py-2 text-base" placeholder="Nhập họ tên của bạn">
+      </div>
+      <div>
+        <label class="text-xs uppercase tracking-wide text-text-dark/60">Bạn của *</label>
+        <select name="side" required class="w-full mt-2 bg-transparent border-b border-border-pink focus:outline-none focus:border-text-dark py-2 text-base">
+          <option value="">-- Chọn --</option>
+          <option value="groom">Chú rể (Trung Hiếu)</option>
+          <option value="bride">Cô dâu (Thanh Phương)</option>
+        </select>
       </div>
       <div>
         <label class="text-xs uppercase tracking-wide text-text-dark/60">Số điện thoại</label>
