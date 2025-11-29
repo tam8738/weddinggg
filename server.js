@@ -149,7 +149,7 @@ async function appendRow(title, values) {
 async function fetchGuestbookRows(limit = 10) {
   const sheets = await getSheetsClient();
   await ensureSheetExists(GUESTBOOK_SHEET);
-  const range = `${GUESTBOOK_SHEET}!A2:D`;
+  const range = `${GUESTBOOK_SHEET}!A2:E`;
   const result = await sheets.spreadsheets.values.get({
     spreadsheetId: SHEET_ID,
     range
@@ -158,8 +158,9 @@ async function fetchGuestbookRows(limit = 10) {
   const mapped = rows.map((row) => ({
     timestamp: row[0] || '',
     name: row[1] || '',
-    contact: row[2] || '',
-    message: row[3] || ''
+    side: row[2] || '',
+    contact: row[3] || '',
+    message: row[4] || ''
   }));
   return mapped.slice(-limit).reverse();
 }
