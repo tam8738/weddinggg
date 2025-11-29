@@ -986,7 +986,7 @@
     guestbookList.innerHTML = latestMessages.slice(0, 3).map((m) => `
       <div class="border border-border-pink p-3">
         <div class="text-xs text-text-dark/60">${m.name || 'Ẩn danh'}</div>
-        <div class="text-sm mt-1">${m.message}</div>
+        <div class="text-sm mt-1">${(m.message || m.contact || 'Không có lời chúc')}</div>
       </div>
     `).join('');
   }
@@ -1035,7 +1035,7 @@
         setTimeout(() => guestbookThanks.classList.add('hidden'), 2000);
       }
       guestbookForm.reset();
-      await loadGuestbook();
+      // Không gọi loadGuestbook() vì data đã có sẵn trong latestMessages
     });
   }
 
