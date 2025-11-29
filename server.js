@@ -14,15 +14,21 @@ const ROOT = __dirname;
 const SHEET_ID = process.env.GOOGLE_SPREADSHEET_ID || '';
 const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || '';
 const PRIVATE_KEY = (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n');
-const RSVP_SHEET = process.env.GOOGLE_RSVP_SHEET || 'RSVP';
-const GUESTBOOK_SHEET = process.env.GOOGLE_GUESTBOOK_SHEET || 'Guestbook';
+
+// Sheet names cho nhà trai và nhà gái
+const RSVP_GROOM_SHEET = 'RSVP - Nhà Trai';
+const RSVP_BRIDE_SHEET = 'RSVP - Nhà Gái';
+const GUESTBOOK_GROOM_SHEET = 'Lời chúc - Nhà Trai';
+const GUESTBOOK_BRIDE_SHEET = 'Lời chúc - Nhà Gái';
 
 const hasGoogleConfig = Boolean(SHEET_ID && SERVICE_ACCOUNT_EMAIL && PRIVATE_KEY);
 let useGoogleSheets = hasGoogleConfig;
 
 const DATA_DIR = path.join(ROOT, 'data');
-const RSVP_FILE = path.join(DATA_DIR, 'rsvp.json');
-const GUESTBOOK_FILE = path.join(DATA_DIR, 'guestbook.json');
+const RSVP_GROOM_FILE = path.join(DATA_DIR, 'rsvp_groom.json');
+const RSVP_BRIDE_FILE = path.join(DATA_DIR, 'rsvp_bride.json');
+const GUESTBOOK_GROOM_FILE = path.join(DATA_DIR, 'guestbook_groom.json');
+const GUESTBOOK_BRIDE_FILE = path.join(DATA_DIR, 'guestbook_bride.json');
 
 app.use(cors());
 app.use(express.json());
@@ -33,8 +39,10 @@ app.use(express.urlencoded({ extended: true }));
 // -------------------------
 function ensureDataFiles() {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR);
-  if (!fs.existsSync(RSVP_FILE)) fs.writeFileSync(RSVP_FILE, '[]', 'utf8');
-  if (!fs.existsSync(GUESTBOOK_FILE)) fs.writeFileSync(GUESTBOOK_FILE, '[]', 'utf8');
+  if (!fs.existsSync(RSVP_GROOM_FILE)) fs.writeFileSync(RSVP_GROOM_FILE, '[]', 'utf8');
+  if (!fs.existsSync(RSVP_BRIDE_FILE)) fs.writeFileSync(RSVP_BRIDE_FILE, '[]', 'utf8');
+  if (!fs.existsSync(GUESTBOOK_GROOM_FILE)) fs.writeFileSync(GUESTBOOK_GROOM_FILE, '[]', 'utf8');
+  if (!fs.existsSync(GUESTBOOK_BRIDE_FILE)) fs.writeFileSync(GUESTBOOK_BRIDE_FILE, '[]', 'utf8');
 }
 
 function safeReadJson(file) {
@@ -77,8 +85,10 @@ function formatSideToVietnamese(side) {
 // Các hàm thao tác với Google Sheets
 // -------------------------
 const SHEET_HEADERS = {
-  [RSVP_SHEET]: ['Thời gian', 'Tên', 'Bạn của', 'Số điện thoại', 'số người đi cùng', 'Ghi chú'],
-  [GUESTBOOK_SHEET]: ['Thời gian', 'Tên', 'Bạn của', 'Liên hệ', 'Lời nhắn']
+  [RSVP_GROOM_SHEET]: ['Thời gian', 'Họ tên', 'Số điện thoại', 'Số người', 'Ghi chú'],
+  [RSVP_BRIDE_SHEET]: ['Thời gian', 'Họ tên', 'Số điện thoại', 'Số người', 'Ghi chú'],
+  [GUESTBOOK_GROOM_SHEET]: ['Thời gian', 'Họ tên', 'Liên hệ', 'Lời chúc'],
+  [GUESTBOOK_BRIDE_SHEET]: ['Thời gian', 'Họ tên', 'Liên hệ', 'Lời chúc']
 };
 
 let sheetsClientPromise = null;
@@ -146,10 +156,10 @@ async function appendRow(title, values) {
   });
 }
 
-async function fetchGuestbookRows(limit = 10) {
+async function fetchGuestbookRows(sheetName, limit = 10) {
   const sheets = await getSheetsClient();
-  await ensureSheetExists(GUESTBOOK_SHEET);
-  const range = `${GUESTBOOK_SHEET}!A2:E`;
+  await ensureSheetExists(sheetName);
+  const range = `${sheetName}!A2:D`;
   const result = await sheets.spreadsheets.values.get({
     spreadsheetId: SHEET_ID,
     range
@@ -158,94 +168,50 @@ async function fetchGuestbookRows(limit = 10) {
   const mapped = rows.map((row) => ({
     timestamp: row[0] || '',
     name: row[1] || '',
-    side: row[2] || '',
-    contact: row[3] || '',
-    message: row[4] || ''
+    contact: row[2] || '',
+    message: row[3] || ''
   }));
   return mapped.slice(-limit).reverse();
 }
 
-// -------------------------
-// Lớp trừu tượng để chọn nơi lưu: Sheets hoặc JSON
-// -------------------------
-function createGoogleStorage() {
-  return {
-    init: async () => {
-      await Promise.all(Object.keys(SHEET_HEADERS).map((title) => ensureSheetExists(title)));
-    },
-    saveRsvp: async (entry) => {
-      await appendRow(RSVP_SHEET, [entry.timestamp, entry.name, formatSideToVietnamese(entry.side), entry.phone, entry.guests, entry.note]);
-    },
-    saveGuestbook: async (entry) => {
-      await appendRow(GUESTBOOK_SHEET, [entry.timestamp, entry.name, formatSideToVietnamese(entry.side), entry.contact, entry.message]);
-    },
-    getGuestbook: async (limit) => fetchGuestbookRows(limit)
-  };
-}
-
-function createLocalStorage() {
-  return {
-    init: async () => {
-      ensureDataFiles();
-    },
-    saveRsvp: async (entry) => {
-      const list = safeReadJson(RSVP_FILE);
-      list.unshift(entry);
-      safeWriteJson(RSVP_FILE, list);
-    },
-    saveGuestbook: async (entry) => {
-      const list = safeReadJson(GUESTBOOK_FILE);
-      list.unshift(entry);
-      safeWriteJson(GUESTBOOK_FILE, list);
-    },
-    getGuestbook: async (limit) => {
-      const list = safeReadJson(GUESTBOOK_FILE);
-      return list.slice(0, limit);
-    }
-  };
-}
-
-let storage = useGoogleSheets ? createGoogleStorage() : createLocalStorage();
-
-async function initializeStorage() {
+// Initialize sheets hoặc local files
+async function initializeSheets() {
   try {
-    await storage.init();
     if (useGoogleSheets) {
-      console.log('Google Sheets storage ready');
+      const sheetNames = [RSVP_GROOM_SHEET, RSVP_BRIDE_SHEET, GUESTBOOK_GROOM_SHEET, GUESTBOOK_BRIDE_SHEET];
+      for (const name of sheetNames) {
+        await ensureSheetExists(name);
+      }
+      console.log('Google Sheets initialized with 4 sheets');
     } else {
+      ensureDataFiles();
       console.log('Local JSON storage ready');
     }
   } catch (err) {
-    console.error('Storage initialisation failed', err);
+    console.error('Initialization failed', err);
     if (useGoogleSheets) {
-      console.warn('Falling back to local JSON storage. Data will be kept on disk.');
+      console.warn('Falling back to local JSON storage.');
       useGoogleSheets = false;
       sheetsClientPromise = null;
-      storage = createLocalStorage();
-      try {
-        await storage.init();
-        console.log('Local JSON storage ready');
-      } catch (fallbackErr) {
-        console.error('Fallback storage initialisation failed', fallbackErr);
-      }
+      ensureDataFiles();
     }
   }
 }
 
-initializeStorage();
+initializeSheets();
 
 // -------------------------
 // Định nghĩa API phục vụ frontend
 // -------------------------
-app.post('/api/rsvp', async (req, res) => {
-  const { name, side = '', phone = '', guests = 1, note = '', timestamp } = req.body || {};
+// RSVP - Nhà Trai
+app.post('/api/rsvp/groom', async (req, res) => {
+  const { name, phone = '', guests = 1, note = '', timestamp } = req.body || {};
   if (!name || String(name).trim().length === 0) {
     return res.status(400).json({ ok: false, error: 'Name is required' });
   }
   const formattedTimestamp = formatTimestampGMT7(timestamp);
   const entry = {
     name: String(name).trim(),
-    side: String(side).trim(),
     phone: String(phone).trim(),
     guests: Number(guests) || 1,
     note: String(note).trim(),
@@ -253,43 +219,136 @@ app.post('/api/rsvp', async (req, res) => {
     timestamp: formattedTimestamp
   };
   try {
-    await storage.saveRsvp(entry);
+    if (useGoogleSheets) {
+      await appendRow(RSVP_GROOM_SHEET, [entry.timestamp, entry.name, entry.phone, entry.guests, entry.note]);
+    } else {
+      const list = safeReadJson(RSVP_GROOM_FILE);
+      list.unshift(entry);
+      safeWriteJson(RSVP_GROOM_FILE, list);
+    }
     res.json({ ok: true });
   } catch (error) {
-    console.error('RSVP save failed', error);
+    console.error('RSVP groom save failed', error);
     res.status(500).json({ ok: false, error: 'Unable to save RSVP' });
   }
 });
 
-app.post('/api/guestbook', async (req, res) => {
-  const { name, side = '', contact = '', message, timestamp } = req.body || {};
+// RSVP - Nhà Gái
+app.post('/api/rsvp/bride', async (req, res) => {
+  const { name, phone = '', guests = 1, note = '', timestamp } = req.body || {};
+  if (!name || String(name).trim().length === 0) {
+    return res.status(400).json({ ok: false, error: 'Name is required' });
+  }
+  const formattedTimestamp = formatTimestampGMT7(timestamp);
+  const entry = {
+    name: String(name).trim(),
+    phone: String(phone).trim(),
+    guests: Number(guests) || 1,
+    note: String(note).trim(),
+    type: 'RSVP',
+    timestamp: formattedTimestamp
+  };
+  try {
+    if (useGoogleSheets) {
+      await appendRow(RSVP_BRIDE_SHEET, [entry.timestamp, entry.name, entry.phone, entry.guests, entry.note]);
+    } else {
+      const list = safeReadJson(RSVP_BRIDE_FILE);
+      list.unshift(entry);
+      safeWriteJson(RSVP_BRIDE_FILE, list);
+    }
+    res.json({ ok: true });
+  } catch (error) {
+    console.error('RSVP bride save failed', error);
+    res.status(500).json({ ok: false, error: 'Unable to save RSVP' });
+  }
+});
+
+// Guestbook - Nhà Trai
+app.post('/api/guestbook/groom', async (req, res) => {
+  const { name, contact = '', message, timestamp } = req.body || {};
   if (!name || !message || String(name).trim().length === 0 || String(message).trim().length === 0) {
     return res.status(400).json({ ok: false, error: 'Name and message are required' });
   }
   const formattedTimestamp = formatTimestampGMT7(timestamp);
   const entry = {
     name: String(name).trim(),
-    side: String(side).trim(),
     contact: String(contact).trim(),
     message: String(message).trim(),
     type: 'GUESTBOOK',
     timestamp: formattedTimestamp
   };
   try {
-    await storage.saveGuestbook(entry);
+    if (useGoogleSheets) {
+      await appendRow(GUESTBOOK_GROOM_SHEET, [entry.timestamp, entry.name, entry.contact, entry.message]);
+    } else {
+      const list = safeReadJson(GUESTBOOK_GROOM_FILE);
+      list.unshift(entry);
+      safeWriteJson(GUESTBOOK_GROOM_FILE, list);
+    }
     res.json({ ok: true });
   } catch (error) {
-    console.error('Guestbook save failed', error);
+    console.error('Guestbook groom save failed', error);
     res.status(500).json({ ok: false, error: 'Unable to save guestbook entry' });
   }
 });
 
-app.get('/api/guestbook', async (req, res) => {
+// Guestbook - Nhà Gái
+app.post('/api/guestbook/bride', async (req, res) => {
+  const { name, contact = '', message, timestamp } = req.body || {};
+  if (!name || !message || String(name).trim().length === 0 || String(message).trim().length === 0) {
+    return res.status(400).json({ ok: false, error: 'Name and message are required' });
+  }
+  const formattedTimestamp = formatTimestampGMT7(timestamp);
+  const entry = {
+    name: String(name).trim(),
+    contact: String(contact).trim(),
+    message: String(message).trim(),
+    type: 'GUESTBOOK',
+    timestamp: formattedTimestamp
+  };
   try {
-    const items = await storage.getGuestbook(10);
+    if (useGoogleSheets) {
+      await appendRow(GUESTBOOK_BRIDE_SHEET, [entry.timestamp, entry.name, entry.contact, entry.message]);
+    } else {
+      const list = safeReadJson(GUESTBOOK_BRIDE_FILE);
+      list.unshift(entry);
+      safeWriteJson(GUESTBOOK_BRIDE_FILE, list);
+    }
+    res.json({ ok: true });
+  } catch (error) {
+    console.error('Guestbook bride save failed', error);
+    res.status(500).json({ ok: false, error: 'Unable to save guestbook entry' });
+  }
+});
+
+// GET Guestbook - Nhà Trai
+app.get('/api/guestbook/groom', async (req, res) => {
+  try {
+    let items = [];
+    if (useGoogleSheets) {
+      items = await fetchGuestbookRows(GUESTBOOK_GROOM_SHEET, 10);
+    } else {
+      items = safeReadJson(GUESTBOOK_GROOM_FILE).slice(0, 10);
+    }
     res.json({ ok: true, items });
   } catch (error) {
-    console.error('Guestbook fetch failed', error);
+    console.error('Guestbook groom fetch failed', error);
+    res.status(500).json({ ok: false, error: 'Unable to load guestbook' });
+  }
+});
+
+// GET Guestbook - Nhà Gái
+app.get('/api/guestbook/bride', async (req, res) => {
+  try {
+    let items = [];
+    if (useGoogleSheets) {
+      items = await fetchGuestbookRows(GUESTBOOK_BRIDE_SHEET, 10);
+    } else {
+      items = safeReadJson(GUESTBOOK_BRIDE_FILE).slice(0, 10);
+    }
+    res.json({ ok: true, items });
+  } catch (error) {
+    console.error('Guestbook bride fetch failed', error);
     res.status(500).json({ ok: false, error: 'Unable to load guestbook' });
   }
 });
