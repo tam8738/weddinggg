@@ -595,15 +595,19 @@
   
   btnMusic.addEventListener('click', () => toggleMusic(true));
   
-  // Tự động phát nhạc khi user click/tap vào trang (tuân thủ autoplay policy)
+  // Tự động phát nhạc khi user tương tác (click, keypress, scroll)
   function attemptAutoPlay() {
     if (!autoPlayAttempted && !isPlaying) {
       toggleMusic(false);
     }
   }
   
+  // Các loại user interaction
   document.addEventListener('click', attemptAutoPlay, { once: true });
+  document.addEventListener('keypress', attemptAutoPlay, { once: true });
   document.addEventListener('touchstart', attemptAutoPlay, { once: true });
+  document.addEventListener('scroll', attemptAutoPlay, { once: true });
+  window.addEventListener('wheel', attemptAutoPlay, { once: true });
 
   if (galleryImages.length && lightbox && lightboxImage && lightboxClose) {
     let lastFocusedElement = null;
