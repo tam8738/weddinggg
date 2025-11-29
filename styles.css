@@ -1,12 +1,25 @@
-html {
-  font-size: 18px;
+* {
+  box-sizing: border-box; /* tính padding/border vào width */
 }
+
+html {
+  font-size: 16px; /* giảm từ 18px xuống 16px để vừa màn hình nhỏ */
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 18px; /* trở lại 18px trên tablet+ */
+  }
+}
+
 body {
   font-family: 'Pacifico', cursive; /* kiểu viết tay theo yêu cầu */
   color: #920000; /* chữ đỏ */
   scroll-behavior: smooth; /* cuộn trang mượt khi nhảy anchor */
   background-color: #faf2df; /* nền be */
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
 .section-bg-nen {

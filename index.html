@@ -14,6 +14,12 @@
     tailwind.config = {
       theme: {
         extend: {
+          screens: {
+            'xs': '320px',  /* Galaxy S9+ */
+            'sm': '640px',
+            'md': '768px',
+            'lg': '1024px'
+          },
           colors: {
             'primary-pink': '#fceee0',
             'accent-pink': '#920000',
@@ -88,7 +94,7 @@
       <p class="save-date-text uppercase tracking-[0.35em] text-sm md:text-base text-text-dark/80 mb-4">
         SAVE THE DATE
       </p>
-      <h1 class="font-heading text-text-dark text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold leading-tight mb-4 whitespace-nowrap">
+      <h1 class="font-heading text-text-dark text-2xl xs:text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold leading-tight mb-4 whitespace-nowrap">
         Trung Hiếu &amp; Thanh Phương
       </h1>
       <p class="text-text-dark text-xl md:text-3xl mb-8">
@@ -96,11 +102,11 @@
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
           <a href="#guestbook"
-            class="inline-block px-10 py-3 border border-border-pink text-text-dark rounded-full tracking-wide text-base md:text-lg hover:bg-primary-pink hover:text-[#9f4646] transition">
+            class="inline-block px-6 xs:px-10 py-2 xs:py-3 border border-border-pink text-text-dark rounded-full tracking-wide text-sm xs:text-base md:text-lg hover:bg-primary-pink hover:text-[#9f4646] transition">
           GỬI LỜI CHÚC
         </a>
           <button onclick="openRSVP()"
-            class="inline-block px-10 py-3 border border-border-pink text-text-dark rounded-full tracking-wide text-base md:text-lg hover:bg-primary-pink hover:text-[#9f4646] transition">
+            class="inline-block px-6 xs:px-10 py-2 xs:py-3 border border-border-pink text-text-dark rounded-full tracking-wide text-sm xs:text-base md:text-lg hover:bg-primary-pink hover:text-[#9f4646] transition">
           XÁC NHẬN THAM DỰ
         </button>
       </div>
@@ -108,8 +114,8 @@
   </section>
 
   <!-- KHU 2: Thông tin cô dâu chú rể -->
-  <section id="couple" class="py-16 md:py-20 pb-0 bg-milky">
-    <div class="max-w-6xl mx-auto px-4 scroll-animate">
+  <section id="couple" class="py-12 xs:py-16 md:py-20 pb-0 bg-milky">
+    <div class="max-w-6xl mx-auto px-3 xs:px-4 scroll-animate">
       <div class="couple-grid grid md:grid-cols-2 gap-10 md:gap-y-0 md:gap-x-0 items-start relative">
         <!-- Trái tim nối hai thẻ nhân vật -->
         <div class="couple-connector" aria-hidden="true">
