@@ -565,7 +565,8 @@
   }
 
   let isPlaying = false;
-  btnMusic.addEventListener('click', () => {
+  
+  function toggleMusic() {
     if (!isPlaying) {
       if (audio.paused) {
         audio.currentTime = 0;
@@ -586,6 +587,17 @@
       isPlaying = false;
       musicIcon.classList.remove('spin-slow');
     }
+  }
+  
+  btnMusic.addEventListener('click', toggleMusic);
+  
+  // Auto-play nhạc khi tải trang
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      if (!isPlaying) {
+        toggleMusic();
+      }
+    }, 500);
   });
 
   if (galleryImages.length && lightbox && lightboxImage && lightboxClose) {
