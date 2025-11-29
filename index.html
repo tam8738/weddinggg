@@ -74,13 +74,13 @@
   <section id="hero" class="relative h-[90vh] md:h-screen overflow-hidden">
     <!-- Trình chiếu ảnh nền -->
     <div class="hero-slide">
-      <img src="img/anh1.jpg" class="w-full h-full object-cover opacity-40" alt="Wedding photo 1">
+      <img src="img/anhnen1.jpg" class="w-full h-full object-cover opacity-40" alt="Wedding photo 1">
     </div>
     <div class="hero-slide">
-      <img src="img/anh1.jpg" class="w-full h-full object-cover opacity-40" alt="Wedding photo 2">
+      <img src="img/anhnen2.jpg" class="w-full h-full object-cover opacity-40" alt="Wedding photo 2">
     </div>
     <div class="hero-slide">
-      <img src="img/anh1.jpg" class="w-full h-full object-cover opacity-40" alt="Wedding photo 3">
+      <img src="img/anhnen3.jpg" class="w-full h-full object-cover opacity-40" alt="Wedding photo 3">
     </div>
 
     <!-- Lớp phủ nền sử dụng texture nen.jpg -->
@@ -99,216 +99,137 @@
       </h1>
       <p class="text-text-dark text-xl md:text-3xl mb-8">
         20 tháng 12 2025
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center">
-          <a href="#guestbook"
-            class="inline-block px-6 xs:px-10 py-2 xs:py-3 border border-border-pink text-text-dark rounded-full tracking-wide text-sm xs:text-base md:text-lg hover:bg-primary-pink hover:text-[#9f4646] transition">
-          GỬI LỜI CHÚC
-        </a>
-          <button onclick="openRSVP()"
-            class="inline-block px-6 xs:px-10 py-2 xs:py-3 border border-border-pink text-text-dark rounded-full tracking-wide text-sm xs:text-base md:text-lg hover:bg-primary-pink hover:text-[#9f4646] transition">
-          XÁC NHẬN THAM DỰ
-        </button>
       </div>
     </div>
   </section>
 
-  <!-- KHU 2: Thông tin cô dâu chú rể -->
-  <section id="couple" class="py-12 xs:py-16 md:py-20 pb-0 bg-milky">
-    <div class="max-w-6xl mx-auto px-3 xs:px-4 scroll-animate">
-      <div class="couple-grid grid md:grid-cols-2 gap-10 md:gap-y-0 md:gap-x-0 items-start relative">
-        <!-- Trái tim nối hai thẻ nhân vật -->
-        <div class="couple-connector" aria-hidden="true">
-          <span class="couple-connector__line"></span>
-          <div class="couple-connector__heart">
-            <i class="fa-solid fa-heart"></i>
-          </div>
-          <span class="couple-connector__line"></span>
-        </div>
+  <!-- KHU 7: Thông tin sự kiện với nền parallax -->
+  <section id="events" class="py-16 md:py-24 relative">
+    <div class="absolute inset-0">
+      <img src="img/13.jpg" class="w-full h-full object-cover" alt="">
+      <div class="absolute inset-0 bg-block-light/85"></div>
+    </div>
 
-        <!-- Thông tin chú rể -->
-        <div class="group relative person-photo scroll-animate md:justify-self-end" data-aos="fade-right">
-          <div class="rounded-3xl overflow-hidden shadow-lg border border-border-pink bg-block-light">
-            <img src="img/anh1.jpg" class="uniform-img" alt="Groom">
-          </div>
-          <!-- Thẻ thông tin hiện khi hover -->
-          <div class="absolute inset-3 bg-block-light/95 rounded-3xl shadow-2xl flex flex-col items-center justify-center text-center px-6 py-10 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition duration-500">
-            <p class="font-heading text-4xl text-accent-pink mb-2">Trung Hiếu</p>
-            <p class="uppercase text-xs tracking-[0.3em] text-text-dark/60 mb-4">THE GROOM</p>
-            <p class="text-base leading-relaxed text-text-dark/80">
-              Là một người hiền lành nhưng nói nhiều, thích đi du lịch, thích kiếm tiền và tiêu tiền.
-              Luôn coi trọng tình cảm và gia đình.
-            </p>
-          </div>
-          <!-- Viền kép vẽ dần khi hover -->
-          <div class="overlay-border">
-            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-              <!-- Outer portrait rect -->
-              <line x1="50" y1="2" x2="2" y2="2" pathLength="100" />
-              <line x1="50" y1="2" x2="98" y2="2" pathLength="100" />
-              <line x1="98" y1="2" x2="98" y2="50" pathLength="100" />
-              <line x1="98" y1="50" x2="98" y2="98" pathLength="100" />
-              <line x1="98" y1="98" x2="50" y2="98" pathLength="100" />
-              <line x1="50" y1="98" x2="2" y2="98" pathLength="100" />
-              <line x1="2" y1="98" x2="2" y2="50" pathLength="100" />
-              <line x1="2" y1="50" x2="2" y2="2" pathLength="100" />
-              <!-- Inner rect (offset 4 units on all sides) -->
-              <line class="inner-frame" x1="50" y1="6" x2="6" y2="6" pathLength="100" />
-              <line class="inner-frame" x1="50" y1="6" x2="94" y2="6" pathLength="100" />
-              <line class="inner-frame" x1="94" y1="6" x2="94" y2="50" pathLength="100" />
-              <line class="inner-frame" x1="94" y1="50" x2="94" y2="94" pathLength="100" />
-              <line class="inner-frame" x1="94" y1="94" x2="50" y2="94" pathLength="100" />
-              <line class="inner-frame" x1="50" y1="94" x2="6" y2="94" pathLength="100" />
-              <line class="inner-frame" x1="6" y1="94" x2="6" y2="50" pathLength="100" />
-              <line class="inner-frame" x1="6" y1="50" x2="6" y2="6" pathLength="100" />
-            </svg>
-          </div>
-        </div>
-
-        <!-- Thông tin cô dâu -->
-        <div class="group relative person-photo scroll-animate md:justify-self-start" data-aos="fade-left">
-          <div class="rounded-3xl overflow-hidden shadow-lg border border-border-pink bg-block-light">
-            <img src="img/anh1.jpg" class="uniform-img" alt="Bride">
-          </div>
-          <!-- Thẻ thông tin hiện khi hover -->
-          <div class="absolute inset-3 bg-block-light/95 rounded-3xl shadow-2xl flex flex-col items-center justify-center text-center px-6 py-10 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition duration-500">
-            <p class="font-heading text-4xl text-accent-pink mb-2">Thanh Phương</p>
-            <p class="uppercase text-xs tracking-[0.3em] text-text-dark/60 mb-4">THE BRIDE</p>
-            <p class="text-base leading-relaxed text-text-dark/80">
-              Là một người hay cười nhưng sống nội tâm, thích hoa, thích mua sắm, thích đi
-              những nơi có gió và luôn mơ về một ngôi nhà nhỏ.
-            </p>
-          </div>
-          <!-- Viền kép vẽ dần khi hover -->
-          <div class="overlay-border">
-            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-              <!-- Outer portrait rect -->
-              <line x1="50" y1="2" x2="2" y2="2" pathLength="100" />
-              <line x1="50" y1="2" x2="98" y2="2" pathLength="100" />
-              <line x1="98" y1="2" x2="98" y2="50" pathLength="100" />
-              <line x1="98" y1="50" x2="98" y2="98" pathLength="100" />
-              <line x1="98" y1="98" x2="50" y2="98" pathLength="100" />
-              <line x1="50" y1="98" x2="2" y2="98" pathLength="100" />
-              <line x1="2" y1="98" x2="2" y2="50" pathLength="100" />
-              <line x1="2" y1="50" x2="2" y2="2" pathLength="100" />
-              <!-- Inner rect (offset 4 units on all sides) -->
-              <line class="inner-frame" x1="50" y1="6" x2="6" y2="6" pathLength="100" />
-              <line class="inner-frame" x1="50" y1="6" x2="94" y2="6" pathLength="100" />
-              <line class="inner-frame" x1="94" y1="6" x2="94" y2="50" pathLength="100" />
-              <line class="inner-frame" x1="94" y1="50" x2="94" y2="94" pathLength="100" />
-              <line class="inner-frame" x1="94" y1="94" x2="50" y2="94" pathLength="100" />
-              <line class="inner-frame" x1="50" y1="94" x2="6" y2="94" pathLength="100" />
-              <line class="inner-frame" x1="6" y1="94" x2="6" y2="50" pathLength="100" />
-              <line class="inner-frame" x1="6" y1="50" x2="6" y2="6" pathLength="100" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Đoạn cảm ơn ngắn cuối phần giới thiệu -->
-      <div class="mt-8 text-center bg-milky rounded-3xl py-8 md:py-12 px-4 md:px-6 md:w-full md:max-w-[1260px] md:mx-auto md:pb-0 md:pr-0 md:pl-0" style="aspect-ratio: 1260/330;padding-top: 0px;">
-        <h2 class="font-heading text-3xl md:text-5xl text-text-dark mb-4 md:mb-6 scroll-animate is-visible">
-          Và.. Ngày ấy đã tới
-        </h2>
-        <p class="max-w-3xl mx-auto mb-3 md:mb-5 text-sm md:text-lg text-text-dark/80 scroll-animate is-visible">
-          Thật vui vì được gặp và đón tiếp các bạn trong một dịp đặc biệt - Ngày cưới của chúng mình.
-          Chúng mình muốn gửi đến bạn lời cảm ơn sâu sắc nhất vì đã luôn ở bên và chia sẻ cùng tụi mình.
+    <div class="relative max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12 scroll-animate">
+        <h2 class="font-heading text-4xl md:text-5xl mb-3 text-text-dark">Thông tin sự kiện</h2>
+        <p class="text-base md:text-lg text-text-dark/80">
+          Rất mong bạn sẽ sắp xếp thời gian để cùng đến chung vui
         </p>
-        <p class="font-art text-3xl md:text-6xl mb-6 md:mb-12 text-text-dark scroll-animate is-visible">Trung Hiếu &amp; Thanh Phương</p>
+      </div>
 
-        <div class="grid md:grid-cols-2 gap-4 md:gap-8 text-sm md:text-base text-text-dark/85 max-w-3xl mx-auto scroll-animate is-visible">
-          <div>
-            <p class="uppercase text-xs tracking-wide text-text-dark/60 mb-1">Nhà trai</p>
-            <p>Con ông: <span class="font-semibold">Y</span></p>
-            <p>Con bà: <span class="font-semibold">X</span></p>
+      <div class="grid md:grid-cols-2 gap-10 scroll-animate">
+        <!-- Ô nhà trai -->
+        <div class="bg-block-light text-text-dark rounded-3xl shadow-2xl double-border px-8 md:px-10 py-12 md:py-14 flex flex-col">
+          <h3 class="font-heading text-4xl md:text-4xl text-accent-pink text-center mb-8">Nhà Trai</h3>
+          
+          <div class="space-y-6 flex-1">
+            <!-- Bữa cơm thân mật -->
+            <div class="border-b border-border-pink pb-6">
+              <div class="flex gap-3 items-start mb-3">
+                <i class="fa-solid fa-utensils text-accent-pink text-lg mt-1"></i>
+                <div>
+                  <p class="font-heading text-2xl text-accent-pink">Bữa Cơm Thân Mật</p>
+                  <p class="text-sm text-text-dark/80 mt-1">16:30 · 20/12/2025</p>
+                  <p class="text-sm mt-2">Số 9 Đồng viềng, thôn Cam Đà, xã Quảng oai, tp Hà Nội</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lễ thành hôn -->
+            <div>
+              <div class="flex gap-3 items-start">
+                <i class="fa-solid fa-champagne-glasses text-accent-pink text-lg mt-1"></i>
+                <div>
+                  <p class="font-heading text-2xl text-accent-pink">Lễ Thành Hôn</p>
+                  <p class="text-sm text-text-dark/80 mt-1">11:00 · 21/12/2025</p>
+                  <p class="text-sm mt-2">Tư gia nhà trai</p>
+                  <p class="text-xs text-text-dark/70 mt-3 italic">Kính mời bạn đến chứng kiến khoảnh khắc trọng đại</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <p class="uppercase text-xs tracking-wide text-text-dark/60 mb-1">Nhà gái</p>
-            <p>Con ông: <span class="font-semibold">A</span></p>
-            <p>Con bà: <span class="font-semibold">B</span></p>
+
+          <!-- Button Google Maps -->
+          <div class="mt-8 pt-6 border-t border-border-pink">
+            <a href="https://maps.app.goo.gl/rXPc6RVSs1RA8Ko76" target="_blank" class="w-full py-2.5 px-4 bg-accent-pink text-white rounded-full text-center text-sm font-medium hover:opacity-90 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-location-dot"></i> Xem trên Google Maps
+            </a>
+          </div>
+        </div>
+
+        <!-- Ô nhà gái -->
+        <div class="bg-block-light text-text-dark rounded-3xl shadow-2xl double-border px-8 md:px-10 py-12 md:py-14 flex flex-col">
+          <h3 class="font-heading text-4xl md:text-4xl text-accent-pink text-center mb-8">Nhà Gái</h3>
+          
+          <div class="space-y-6 flex-1">
+            <!-- Bữa cơm thân mật -->
+            <div class="border-b border-border-pink pb-6">
+              <div class="flex gap-3 items-start mb-3">
+                <i class="fa-solid fa-utensils text-accent-pink text-lg mt-1"></i>
+                <div>
+                  <p class="font-heading text-2xl text-accent-pink">Bữa Cơm Thân Mật</p>
+                  <p class="text-sm text-text-dark/80 mt-1">16:30 · 20/12/2025</p>
+                  <p class="text-sm mt-2">Số 38 khu 2, thôn Thanh Lũng, xã Quảng Oai, tp Hà Nội</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lễ Vu Quy -->
+            <div>
+              <div class="flex gap-3 items-start">
+                <i class="fa-solid fa-ring text-accent-pink text-lg mt-1"></i>
+                <div>
+                  <p class="font-heading text-2xl text-accent-pink">Lễ Vu Quy</p>
+                  <p class="text-sm text-text-dark/80 mt-1">11:00 · 21/12/2025</p>
+                  <p class="text-sm mt-2">Tư gia nhà gái</p>
+                  <p class="text-xs text-text-dark/70 mt-3 italic">Kính mời bạn đến chứng kiến khoảnh khắc trọng đại</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Button Google Maps -->
+          <div class="mt-8 pt-6 border-t border-border-pink">
+            <a href="https://maps.app.goo.gl/wSV1SXSt2RgXSUqv7" target="_blank" class="w-full py-2.5 px-4 bg-accent-pink text-white rounded-full text-center text-sm font-medium hover:opacity-90 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-location-dot"></i> Xem trên Google Maps
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- KHU 3: Tiêu đề câu chuyện tình yêu -->
-  <section>
-            <div class="diagonal-section bg-center bg-cover bg-fixed"
-              style="background-image:url('img/ring.jpg');">
-      <div class="bg-accent-pink/95 py-16 md:py-24">
-        <div class="max-w-6xl mx-auto px-4 text-center text-white scroll-animate">
-          <h2 class="font-heading text-4xl md:text-5xl mb-5">Chuyện chúng mình</h2>
-          <div class="flex justify-center">
-            <span class="w-16 border-t border-white/60"></span>
-          </div>
+  <!-- KHU 6: Album ảnh cưới -->
+  <section id="gallery" class="py-16 md:py-20 bg-accent-pink">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12 scroll-animate">
+        <p class="font-heading text-4xl md:text-5xl text-white mb-4">
+          Album Hình Cưới
+        </p>
+        <div class="flex items-center justify-center gap-3 text-white">
+          <span class="w-10 border-t border-white"></span>
+          <i class="fa-regular fa-gem"></i>
+          <span class="w-10 border-t border-white"></span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- KHU 4: Timeline chuyện tình -->
-  <section id="timeline" class="py-16 md:py-20 pb-0 md:pb-20 bg-milky tulip-bg">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="relative">
-        <div class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 border-l-2 border-border-pink hidden md:block"></div>
-
-        <!-- Mốc 1: bắt đầu tình cờ -->
-        <div class="mb-16 md:grid md:grid-cols-2 md:gap-12 items-center timeline-item scroll-animate">
-          <div class="md:text-right md:pr-8 order-2 md:order-1">
-            <div class="inline-block double-border border-border-pink bg-block-light px-8 py-6 rounded-2xl shadow-sm">
-              <p class="font-heading text-accent-pink text-2xl mb-3">Bắt đầu thật tình cờ</p>
-              <p class="text-base leading-relaxed">
-                Vào một ngày đẹp trời, chú rể rep story của cô dâu và câu chuyện của chúng mình bắt đầu từ đó.
-              </p>
-            </div>
-          </div>
-          <div class="md:pl-8 order-1 md:order-2 mb-6 md:mb-0 flex justify-center">
-            <img src="img/9.jpg" class="rounded-3xl shadow-lg border border-border-pink uniform-img" alt="">
-          </div>
-        </div>
-
-        <!-- Hộp trích dẫn ở giữa timeline -->
-        <div class="mb-16 flex justify-center timeline-item scroll-animate">
-          <div class="double-border bg-block-light px-10 py-10 rounded-2xl max-w-2xl text-center">
-            <p class="font-heading text-accent-pink text-2xl md:text-3xl leading-relaxed">
-              “Tình yêu là sự cảm động, là những ngày cùng nhau đi qua nắng mưa, là người vẫn ở đó chờ mình mỗi khi quay về.”
-            </p>
-          </div>
-        </div>
-
-        <!-- Mốc 2: cùng nhau trưởng thành -->
-        <div class="mb-16 md:grid md:grid-cols-2 md:gap-12 items-center timeline-item scroll-animate">
-          <div class="md:pr-8 mb-6 md:mb-0 flex justify-center">
-            <img src="img/10.jpg" class="rounded-3xl shadow-lg border border-border-pink uniform-img" alt="">
-          </div>
-          <div class="md:pl-8">
-            <div class="inline-block double-border bg-block-light px-8 py-6 rounded-2xl text-text-dark shadow-md">
-              <p class="font-heading text-3xl mb-3">Cùng nhau trưởng thành</p>
-              <p class="text-base leading-relaxed text-text-dark/85">
-                Chúng mình đã cùng nhau đi qua rất nhiều yêu thương và thử thách. Vui có, buồn có, nhưng cuối cùng vẫn chọn nắm tay nhau.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mốc 3: lời cầu hôn -->
-        <div class="mb-4 md:grid md:grid-cols-2 md:gap-12 items-center timeline-item scroll-animate">
-          <div class="md:text-right md:pr-8 order-2 md:order-1">
-            <div class="inline-block double-border bg-block-light px-8 py-6 rounded-2xl text-text-dark shadow-md">
-              <p class="font-heading text-3xl mb-3">Lời cầu hôn</p>
-              <p class="text-base leading-relaxed text-text-dark/85">
-                Sau khoảng thời gian tìm hiểu và yêu nhau, chú rể đã ngỏ lời cầu hôn cô dâu trong một ngày đầy bất ngờ và hạnh phúc.
-              </p>
-              <p class="mt-4 text-xs uppercase tracking-[0.3em] text-text-dark/70">
-                13/04/2025
-              </p>
-            </div>
-          </div>
-          <div class="md:pl-8 order-1 md:order-2 mb-6 md:mb-0 flex justify-center">
-            <img src="img/11.jpg" class="rounded-3xl shadow-lg border border-border-pink uniform-img" alt="">
-          </div>
-        </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 scroll-animate">
+        <!-- 9 ảnh demo hiển thị trực tiếp -->
+        <template id="gallery-template"></template>
+        <script>
+          // render using JS so code ngắn hơn
+        </script>
+        <!-- Ảnh dự phòng nếu trình duyệt tắt JS -->
+        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
+        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
+        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
+        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
+        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
+        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
+        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
+        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
+        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
       </div>
     </div>
   </section>
@@ -382,129 +303,6 @@
           <p class="text-sm text-text-dark/70 text-center">
             Hẹn gặp bạn vào ngày 20/12/2025 để cùng chứng kiến khoảnh khắc chúng mình về chung một nhà.
           </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- KHU 6: Album ảnh cưới -->
-  <section id="gallery" class="py-16 md:py-20 bg-accent-pink">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-12 scroll-animate">
-        <p class="font-heading text-4xl md:text-5xl text-white mb-4">
-          Album Hình Cưới
-        </p>
-        <div class="flex items-center justify-center gap-3 text-white">
-          <span class="w-10 border-t border-white"></span>
-          <i class="fa-regular fa-gem"></i>
-          <span class="w-10 border-t border-white"></span>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 scroll-animate">
-        <!-- 9 ảnh demo hiển thị trực tiếp -->
-        <template id="gallery-template"></template>
-        <script>
-          // render using JS so code ngắn hơn
-        </script>
-        <!-- Ảnh dự phòng nếu trình duyệt tắt JS -->
-        <img src="img/4.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500" alt="">
-        <img src="img/5.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500" alt="">
-        <img src="img/6.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500" alt="">
-        <img src="img/7.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500" alt="">
-        <img src="img/8.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500" alt="">
-        <img src="img/9.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500" alt="">
-        <img src="img/10.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500" alt="">
-        <img src="img/11.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500" alt="">
-        <img src="img/12.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500" alt="">
-      </div>
-    </div>
-  </section>
-
-  <!-- KHU 7: Thông tin sự kiện với nền parallax -->
-  <section id="events" class="py-16 md:py-24 relative">
-    <div class="absolute inset-0">
-      <img src="img/13.jpg" class="w-full h-full object-cover" alt="">
-      <div class="absolute inset-0 bg-block-light/85"></div>
-    </div>
-
-    <div class="relative max-w-6xl mx-auto px-4">
-      <div class="flex flex-col md:flex-row md:justify-start">
-        <div class="w-full bg-block-light text-text-dark rounded-3xl shadow-2xl double-border px-8 md:px-12 py-12 md:py-14 scroll-animate" data-aos="fade-right">
-          <h2 class="font-heading text-5xl md:text-5xl mb-7 text-center">
-            Thông tin sự kiện
-          </h2>
-          <p class="text-base md:text-xl text-text-dark/80 mb-9 text-center">
-            Rất mong bạn sẽ sắp xếp thời gian để cùng đến chung vui và chứng kiến khoảnh khắc ý nghĩa nhất của chúng mình.
-          </p>
-
-          <!-- Các thẻ thông tin từng buổi lễ -->
-          <div class="grid gap-6 md:grid-cols-2">
-            <div class="bg-block-light text-text-dark rounded-2xl px-6 py-6 border-4 border-border-pink border-double h-full flex flex-col order-3 md:order-1">
-              <div class="flex gap-4 items-start mb-4">
-                <div class="w-12 h-12 rounded-full bg-primary-pink/70 flex items-center justify-center flex-shrink-0">
-                  <i class="fa-solid fa-utensils text-accent-pink"></i>
-                </div>
-                <div class="text-base md:text-lg flex-1 space-y-2">
-                  <p class="font-heading text-4xl md:text-4xl text-accent-pink">Bữa Cơm Thân Mật</p>
-                  <p>18:30 · 18/12/2025</p>
-                  <div>
-                    <p class="font-semibold text-sm md:text-base">Nhà trai</p>
-                    <p class="text-sm md:text-base">Số 9 Đồng viềng, thôn Cam Đà, xã Quảng oai, tp Hà Nội</p>
-                    <a href="https://maps.app.goo.gl/rXPc6RVSs1RA8Ko76" target="_blank" class="inline-flex items-center gap-2 mt-2 text-xs md:text-sm text-accent-pink underline">
-                      <i class="fa-solid fa-location-dot"></i> Google Maps
-                    </a>
-                  </div>
-                  <div>
-                    <p class="font-semibold text-sm md:text-base">Nhà gái</p>
-                    <p class="text-sm md:text-base">Số 38 khu 2, thôn Thanh Lũng, xã Quảng Oai, tp Hà Nội</p>
-                    <a href="https://maps.app.goo.gl/wSV1SXSt2RgXSUqv7" target="_blank" class="inline-flex items-center gap-2 mt-2 text-xs md:text-sm text-accent-pink underline">
-                      <i class="fa-solid fa-location-dot"></i> Google Maps
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="mt-auto pt-2 text-sm text-text-dark/60">
-                Cùng quây quần trước ngày trọng đại để chia sẻ niềm vui với gia đình hai bên.
-              </div>
-            </div>
-
-            <div class="bg-block-light text-text-dark rounded-2xl px-6 py-6 border-4 border-border-pink border-double h-full flex flex-col order-1 md:order-2">
-              <div class="flex flex-col gap-6 text-base md:text-lg">
-                <div class="flex gap-4 items-start">
-                  <div class="w-12 h-12 rounded-full bg-primary-pink/70 flex items-center justify-center flex-shrink-0">
-                    <i class="fa-solid fa-champagne-glasses text-accent-pink"></i>
-                  </div>
-                  <div class="flex-1">
-                    <p class="font-heading text-4xl md:text-4xl text-accent-pink mb-2">Lễ Thành hôn</p>
-                    <p>11:00 · 20/12/2025</p>
-                    <p>Tư gia nhà trai</p>
-                    <a href="https://maps.app.goo.gl/rXPc6RVSs1RA8Ko76" target="_blank" class="inline-flex items-center gap-2 mt-2 text-xs md:text-sm text-accent-pink underline">
-                      <i class="fa-solid fa-location-dot"></i> Google Maps
-                    </a>
-                  </div>
-                </div>
-                <div class="flex gap-4 items-start border-t border-border-pink pt-4">
-                  <div class="w-12 h-12 rounded-full bg-primary-pink/70 flex items-center justify-center flex-shrink-0">
-                    <i class="fa-solid fa-ring text-accent-pink"></i>
-                  </div>
-                  <div class="flex-1">
-                    <p class="font-heading text-4xl md:text-4xl text-accent-pink mb-2">Lễ Vu Quy</p>
-                    <p>11:00 · 20/12/2025</p>
-                    <p>Tư gia nhà gái</p>
-                    <a href="https://maps.app.goo.gl/wSV1SXSt2RgXSUqv7" target="_blank" class="inline-flex items-center gap-2 mt-2 text-xs md:text-sm text-accent-pink underline">
-                      <i class="fa-solid fa-location-dot"></i> Google Maps
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="mt-auto pt-2 text-sm text-text-dark/60">
-                Hẹn gặp bạn trong hai khoảnh khắc trọng đại: Thành Hôn tại nhà trai và Vu Quy tại nhà gái.
-              </div>
-            </div>
-
-            
-          </div>
         </div>
       </div>
     </div>
