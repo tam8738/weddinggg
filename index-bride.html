@@ -595,15 +595,15 @@
   
   btnMusic.addEventListener('click', () => toggleMusic(true));
   
-  // Tự động phát nhạc khi tải trang
-  window.addEventListener('load', () => {
-    audio.play().then(() => {
-      isPlaying = true;
-      musicIcon.classList.add('spin-slow');
-    }).catch((err) => {
-      console.warn('Không thể phát nhạc nền tự động:', err);
-    });
-  });
+  // Tự động phát nhạc khi user click/tap vào trang (tuân thủ autoplay policy)
+  function attemptAutoPlay() {
+    if (!autoPlayAttempted && !isPlaying) {
+      toggleMusic(false);
+    }
+  }
+  
+  document.addEventListener('click', attemptAutoPlay, { once: true });
+  document.addEventListener('touchstart', attemptAutoPlay, { once: true });
 
   if (galleryImages.length && lightbox && lightboxImage && lightboxClose) {
     let lastFocusedElement = null;
