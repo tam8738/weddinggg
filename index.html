@@ -5,6 +5,53 @@
   <title>Trung Hiếu & Thanh Phương - Wedding Invitation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- Phát âm thanh nền ngay lập tức, trước bất kỳ thứ gì -->
+  <script>
+    (function () {
+      const audioUrl = 'img/nhac_nen.mp3';
+      const player = new Audio(audioUrl);
+      player.id = 'bg-music';
+      player.loop = true;
+      player.preload = 'auto';
+      player.volume = 1;
+
+      window.audioPlayer = player;
+      window.audioAutoplayBlocked = false;
+
+      const unlockAudio = () => {
+        tryPlay();
+      };
+
+      function removeUnlockListeners() {
+        window.removeEventListener('click', unlockAudio);
+        window.removeEventListener('keydown', unlockAudio);
+        window.removeEventListener('touchstart', unlockAudio);
+      }
+
+      function addUnlockListeners() {
+        removeUnlockListeners();
+        window.addEventListener('click', unlockAudio, { once: true });
+        window.addEventListener('keydown', unlockAudio, { once: true });
+        window.addEventListener('touchstart', unlockAudio, { once: true });
+      }
+
+      function tryPlay() {
+        const attempt = player.play();
+        if (attempt && typeof attempt.then === 'function') {
+          attempt.then(() => {
+            window.audioAutoplayBlocked = false;
+            removeUnlockListeners();
+          }).catch(() => {
+            window.audioAutoplayBlocked = true;
+            addUnlockListeners();
+          });
+        }
+      }
+
+      tryPlay();
+    })();
+  </script>
+
   <!-- Phông chữ Google dùng cho tiêu đề và nội dung -->
   <link href="https://fonts.googleapis.com/css2?family=Corinthia&family=Pacifico&display=swap" rel="stylesheet">
 
@@ -48,13 +95,6 @@
 
 <!-- Hiệu ứng trái tim rơi trang trí nền -->
 <div id="hearts-container"></div>
-
-<!-- Nhạc nền phát lặp -->
-<audio id="bg-music" loop>
-  <!-- Fallback demo if file missing -->
-  <source src="img/nhac_nen.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
 
 <!-- Thanh mini bar cố định phía trên -->
 <header class="fixed top-0 left-0 right-0 z-40 bg-accent-pink border-b border-accent-pink">
@@ -243,7 +283,7 @@
 
   <!-- KHU 6: Album ảnh cưới -->
   <section id="gallery" class="py-16 md:py-20 bg-accent-pink">
-    <div class="max-w-6xl mx-auto px-4">
+    <div class="gallery-container mx-auto px-4">
       <div class="text-center mb-12 scroll-animate">
         <p class="font-heading text-4xl md:text-5xl text-white mb-4">
           Album Hình Cưới
@@ -255,22 +295,31 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 scroll-animate">
-        <!-- 9 ảnh demo hiển thị trực tiếp -->
-        <template id="gallery-template"></template>
-        <script>
-          // render using JS so code ngắn hơn
-        </script>
-        <!-- Ảnh dự phòng nếu trình duyệt tắt JS -->
-        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
-        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
-        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
-        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
-        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
-        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
-        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
-        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
-        <img src="img/anhnen1.jpg" class="rounded-3xl shadow-md uniform-img hover:scale-105 transition duration-500 cursor-pointer" alt="Wedding photo">
+      <div class="gallery-wrapper scroll-animate">
+        <div class="gallery-row gallery-row-1">
+          <div class="gallery-col gallery-col-left">
+            <div class="gallery-duo">
+              <img src="img/1.jpg" alt="Ảnh cưới 1" class="gallery-photo photo-square" loading="lazy" decoding="async">
+              <img src="img/2.jpg" alt="Ảnh cưới 2" class="gallery-photo photo-square" loading="lazy" decoding="async">
+            </div>
+            <img src="img/3.jpg" alt="Ảnh cưới 3" class="gallery-photo photo-wide" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-col gallery-col-right">
+            <img src="img/4.jpg" alt="Ảnh cưới 4" class="gallery-photo photo-fill" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="gallery-row gallery-row-2">
+          <div class="gallery-col gallery-col-left">
+            <img src="img/5.jpg" alt="Ảnh cưới 5" class="gallery-photo photo-portrait" loading="lazy" decoding="async">
+          </div>
+          <div class="gallery-col gallery-col-right">
+            <div class="gallery-duo">
+              <img src="img/6.jpg" alt="Ảnh cưới 6" class="gallery-photo photo-square" loading="lazy" decoding="async">
+              <img src="img/7.jpg" alt="Ảnh cưới 7" class="gallery-photo photo-square" loading="lazy" decoding="async">
+            </div>
+            <img src="img/8.jpg" alt="Ảnh cưới 8" class="gallery-photo photo-mega-square" loading="lazy" decoding="async">
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -619,7 +668,9 @@
   const btnComment = document.getElementById('btn-comment');
   const btnMusic = document.getElementById('btn-music');
   const musicIcon = document.getElementById('music-icon');
-  const audio = document.getElementById('bg-music');
+  const audio = typeof window.audioPlayer !== 'undefined' ? window.audioPlayer : new Audio('img/nhac_nen.mp3');
+  audio.loop = true;
+  audio.preload = audio.preload || 'auto';
   const galleryImages = document.querySelectorAll('#gallery img');
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightbox-image');
@@ -639,29 +690,60 @@
     });
   }
 
-  let isPlaying = false;
-  btnMusic.addEventListener('click', () => {
-    if (!isPlaying) {
-      if (audio.paused) {
-        audio.currentTime = 0;
-      }
-      audio.play().then(() => {
-        isPlaying = true;
-        musicIcon.classList.add('spin-slow');
+  let isPlaying = !audio.paused && !audio.ended;
+
+  const setPlayingState = (playing) => {
+    isPlaying = playing;
+    if (musicIcon) {
+      musicIcon.classList.toggle('spin-slow', playing);
+    }
+  };
+
+  setPlayingState(isPlaying);
+
+  function startMusic(showError = true) {
+    audio.muted = false;
+    const attempt = audio.play();
+    if (attempt && typeof attempt.then === 'function') {
+      attempt.then(() => {
+        setPlayingState(true);
       }).catch((err) => {
-        console.warn('Không thể phát nhạc nền:', err);
-        const message = document.getElementById('music-error');
-        if (message) {
-          message.classList.remove('hidden');
-          setTimeout(() => message.classList.add('hidden'), 4000);
+        setPlayingState(false);
+        if (showError) {
+          console.warn('Không thể phát nhạc nền:', err);
+          const message = document.getElementById('music-error');
+          if (message) {
+            message.classList.remove('hidden');
+            setTimeout(() => message.classList.add('hidden'), 4000);
+          }
         }
       });
     } else {
-      audio.pause();
-      isPlaying = false;
-      musicIcon.classList.remove('spin-slow');
+      setPlayingState(!audio.paused);
     }
-  });
+  }
+
+  function stopMusic() {
+    audio.pause();
+    audio.currentTime = 0;
+    setPlayingState(false);
+  }
+
+  function toggleMusic(showError = true) {
+    if (isPlaying) {
+      stopMusic();
+    } else {
+      startMusic(showError);
+    }
+  }
+
+  if (btnMusic) {
+    btnMusic.addEventListener('click', () => toggleMusic(true));
+  }
+
+  audio.addEventListener('play', () => setPlayingState(true));
+  audio.addEventListener('pause', () => setPlayingState(false));
+  audio.addEventListener('ended', () => setPlayingState(false));
 
   if (galleryImages.length && lightbox && lightboxImage && lightboxClose) {
     let lastFocusedElement = null;
