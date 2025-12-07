@@ -241,16 +241,23 @@ body {
   gap: 14px;
 }
 
-.gallery-row-1 .gallery-col-left { flex: 1.4; }
-.gallery-row-1 .gallery-col-right { flex: 1; }
-.gallery-row-2 .gallery-col-left { flex: 0.9; }
+.gallery-row-1 .gallery-col-left,
+.gallery-row-2 .gallery-col-left {
+  flex: 1.35;
+}
+
+.gallery-row-1 .gallery-col-right,
 .gallery-row-2 .gallery-col-right {
-  flex: 1.4;
-  margin-left: 12px; /* đẩy cụm ảnh sang phải nhẹ */
+  flex: 1;
+  margin-left: 0;
 }
 
 .gallery-row-1 .gallery-col-left > .photo-wide {
   object-position: center 35%; /* dịch ảnh lên trên một chút để lộ phần dưới hơn */
+}
+
+.gallery-row-2 .gallery-col-right .gallery-duo .gallery-photo {
+  aspect-ratio: 1 / 1.15; /* kéo dài hai ảnh trên của hàng 2 */
 }
 
 .gallery-duo {
@@ -285,13 +292,29 @@ body {
 }
 
 .gallery-row-2 .gallery-col-right .photo-mega-square {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1.05;
 }
 
 @media (min-width: 768px) {
   .gallery-wrapper { gap: 18px; }
   .gallery-row { gap: 18px; }
   .gallery-duo { gap: 18px; }
+}
+
+@media (min-width: 1024px) {
+  .gallery-container {
+    max-width: min(88vw, 1180px);
+  }
+
+  .gallery-row-1 .gallery-col-right,
+  .gallery-row-2 .gallery-col-right {
+    flex: 1.08;
+  }
+
+  .gallery-row-1 .gallery-col-left,
+  .gallery-row-2 .gallery-col-left {
+    flex: 1.28;
+  }
 }
 
 .couple-grid { position: relative; }
